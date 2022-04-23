@@ -2,9 +2,23 @@
 
 namespace SamtechSkripsi\Controller;
 
-Class LoginController{
+use SamtechSkripsi\App\View;
 
-    function Login(){
-        echo "Controller Login";
+class LoginController
+{
+
+    function Login()
+    {
+        $data = [
+            "tittle" => "Login Page"
+        ];
+        View::view("Login/index", $data);
+    }
+    function Register()
+    {
+        $data = [
+            "tittle" => "Register Page"
+        ];
+        View::view("Register/index", $data);
     }
 }

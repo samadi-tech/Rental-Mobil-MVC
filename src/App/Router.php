@@ -6,13 +6,19 @@ class Router
 {
     private static array $routes = [];
 
-    public static function add(String $method, String $path, String $controller, String $function)
-    {
+    public static function add(
+        String $method,
+        String $path,
+        String $controller,
+        String $function,
+        array $middleware = []
+    ) {
         self::$routes[] = [
             'method' => $method,
             'path' => $path,
             'controller' => $controller,
-            'function' => $function
+            'function' => $function,
+            'middleware' => $middleware
 
         ];
     }
@@ -28,14 +34,20 @@ class Router
         $method = $_SERVER["REQUEST_METHOD"];
 
         foreach (self::$routes as $route) {
-            $pattern="#^".$route['path']."$#";
+            $pattern = "#^" . $route['path'] . "$#";
 
-            if (preg_match($pattern,$path,$variable) && $method == $route['method']) {
+            if (preg_match($pattern, $path, $variable) && $method == $route['method']) {
+
+                foreach ($route['middleware'] as $middle) {
+                    $instance = new $middle;
+                    $instance->before();
+                }
+
                 $controller = new $route['controller'];
                 $function = $route['function'];
 
                 array_shift($variable);
-                call_user_func_array([$controller,$function],$variable);
+                call_user_func_array([$controller, $function], $variable);
                 return;
             }
         }
