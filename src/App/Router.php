@@ -53,6 +53,7 @@ class Router
         }
 
         http_response_code(404);
-        echo "Halaman Error";
+        header("Location:http://localhost/rental/public/index.php/error");
+        exit;
     }
 }

@@ -12,13 +12,13 @@ class LoginController
         $data = [
             "tittle" => "Login Page"
         ];
-        View::view("Login/index", $data);
+        View::ViewLogin("Login/index", $data);
     }
     function Register()
     {
         $data = [
             "tittle" => "Register Page"
         ];
-        View::view("Register/index", $data);
+        View::ViewLogin("Register/index", $data);
     }
 }

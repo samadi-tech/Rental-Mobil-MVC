@@ -1,8 +1,10 @@
-<div class="container-login-admin">
+<!-- Login Member -->
+<div class="container-form">
+    <h1>Login Member</h1>
+    <hr />
+
     <div class="container-login">
-        <h1>PT SamTech <span>Rental</span></h1>
-        <form action="http://localhost/rental/public/admin" method="post">
-            <h1>Login Admin</h1>
+        <form action="<?= BASEURL; ?>/transaksi/booking" method="post">
             <table>
                 <tr>
                     <td>Username</td>
@@ -15,7 +17,10 @@
             </table>
             <div class="form-btn">
                 <button type="submit">Login</button>
+                <p class="btn-link">Daftar</p>
             </div>
+
+            <p>Lupa kata sandi ?</p>
         </form>
     </div>
 </div>

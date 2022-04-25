@@ -1,2 +1,2 @@
 <?php
-define("URL", "http://localhost/Tugas-PBO/public/resource/css/style.css");
+define("BASEURL", "http://localhost/rental/public/index.php");
