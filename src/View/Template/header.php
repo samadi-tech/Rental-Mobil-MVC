@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Rental | SamTech</title>
-    <link rel="stylesheet" href=<?= BASECSS; ?> />
+    <link rel="stylesheet" href=<?= URL; ?> />
 </head>
 
 <body>

@@ -13,21 +13,71 @@
   height: 100px;
   background-color: rgb(243, 243, 243);
 }
+.header h1 {
+  padding-left: 10px;
+  font-size: 2vmax;
+  color: #333;
+}
+.header h1 span {
+  color: rgb(255, 69, 0);
+}
 .header p {
   padding: 0 10px;
-  font-size: 15px;
+  font-size: 0.8vmax;
   color: #333;
 }
 
 .navbar {
   background-color: rgb(255, 69, 0);
   height: 50px;
+  display: flex;
+  flex-direction: row;
+}
+.navbar .nav-toggle {
+  width: 50px;
+  background-color: #333;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+.navbar .nav-toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  border-radius: 3px;
+  background-color: rgb(255, 69, 0);
+  transition: 0.7s;
+}
+.navbar .active-nav span:nth-child(1),
+.navbar .active-nav span:nth-child(3) {
+  width: 0px;
+}
+.navbar .active-nav span:nth-child(2) {
+  position: relative;
+  transform: rotate(495deg);
+  background-color: rgb(255, 69, 0);
+}
+.navbar .active-nav span:nth-child(2)::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  transform: rotate(90deg);
+  background-color: rgb(255, 69, 0);
 }
 .navbar ul {
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
+  display: none;
+  padding-left: 50px;
 }
 .navbar ul li {
   list-style: none;
@@ -50,10 +100,45 @@
 .navbar ul li:hover {
   background-color: #333;
 }
+.navbar .menu-active {
+  display: flex;
+  position: absolute;
+  top: 150px;
+  left: 0;
+  height: auto;
+  flex-direction: column;
+  z-index: 10;
+  background-color: #333;
+  width: 100%;
+}
+.navbar .menu-active li {
+  padding: 10px 0;
+}
 
+@media (min-width: 770px) {
+  .navbar .nav-toggle {
+    display: none;
+  }
+  .navbar ul {
+    display: flex;
+  }
+}
 .jumbotron {
-  height: 300px;
-  background-color: rgb(83, 74, 74);
+  position: relative;
+  background-image: url("../img/rental.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+}
+.jumbotron::after {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  content: "";
+  position: absolute;
+  background-color: rgba(83, 74, 74, 0.3);
 }
 
 .title-main {
@@ -178,9 +263,6 @@
   border-radius: 5px;
   border: 1px solid rgb(255, 69, 0);
 }
-.container-form table td .alamat {
-  height: 100px;
-}
 .container-form .form-btn {
   display: flex;
   align-items: center;
@@ -218,6 +300,23 @@
   color: red;
   text-align: center;
   padding-top: 20px;
+}
+.container-form .btn-link {
+  font-size: 14px;
+  color: red;
+  text-align: center;
+  cursor: pointer;
+}
+.container-form textarea {
+  color: #333;
+  box-sizing: border-box;
+  font-size: 12px;
+  width: 100%;
+  padding: 7px 10px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 69, 0);
+  resize: none;
 }
 
 footer {
@@ -339,4 +438,4 @@ footer span {
   background-color: #eee;
 }
 
-/*# sourceMappingURL=app.css.map */
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,451 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,500;0,700;1,100;1,200;1,500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+$primary: rgb(243, 243, 243);
+$secondary: rgb(255, 69, 0);
+
+// Home
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  background-color: $primary;
+  h1 {
+    padding-left: 10px;
+    font-size: 2vmax;
+    color: #333;
+    span {
+      color: $secondary;
+    }
+  }
+  p {
+    padding: 0 10px;
+    font-size: 0.8vmax;
+    color: #333;
+  }
+}
+.navbar {
+  background-color: rgb(255, 69, 0);
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  .nav-toggle {
+    width: 50px;
+    background-color: #333;
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      border-radius: 3px;
+      background-color: $secondary;
+      transition: 0.7s;
+    }
+  }
+  .active-nav {
+    span:nth-child(1),
+    span:nth-child(3) {
+      width: 0px;
+    }
+    span:nth-child(2) {
+      position: relative;
+      transform: rotate(495deg);
+      background-color: $secondary;
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-radius: 3px;
+        transform: rotate(90deg);
+        background-color: $secondary;
+      }
+    }
+  }
+  ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    display: none;
+    padding-left: 50px;
+    li {
+      list-style: none;
+      height: 100%;
+      padding: 0 25px;
+      a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: bold;
+        color: $primary;
+      }
+    }
+    .active {
+      background-color: #333;
+    }
+    li:hover {
+      background-color: #333;
+    }
+  }
+  .menu-active {
+    display: flex;
+    position: absolute;
+    top: 150px;
+    left: 0;
+    height: auto;
+    flex-direction: column;
+    z-index: 10;
+    background-color: #333;
+    width: 100%;
+    li {
+      padding: 10px 0;
+    }
+  }
+}
+
+@media (min-width: 770px) {
+  .navbar {
+    .nav-toggle {
+      display: none;
+    }
+    ul {
+      display: flex;
+    }
+  }
+}
+
+.jumbotron {
+  position: relative;
+  background-image: url("../img/rental.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+  &::after {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: "";
+    position: absolute;
+    background-color: rgba(83, 74, 74, 0.3);
+  }
+}
+.title-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  height: 100px;
+  padding: 5px;
+  margin: 5px;
+  h1 {
+    color: $secondary;
+    font-size: 22px;
+    text-align: center;
+  }
+  p {
+    font-size: 12px;
+    color: #333;
+    text-align: center;
+  }
+}
+.container-card {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 5px;
+  margin-top: 20px;
+  .cards {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0px 0px 3px rgb(172, 167, 167);
+    .card-pic {
+      height: 200px;
+      width: 100%;
+      background-color: #333;
+      border-radius: 3px;
+    }
+    .card-list {
+      width: 100%;
+      h1 {
+        font-size: 15px;
+        text-align: center;
+        padding: 3px;
+        color: $secondary;
+      }
+      table {
+        font-size: 12px;
+        td {
+          padding: 3px;
+        }
+        span {
+          font-weight: bold;
+          color: $secondary;
+        }
+      }
+      p {
+        text-align: left;
+        margin-top: 10px;
+        color: red;
+        font-size: 8px;
+      }
+    }
+    .card-btn {
+      margin-top: 10px;
+      button {
+        border-radius: 5px;
+        font-size: 12px;
+        padding: 10px 25px;
+        border: 2px solid $secondary;
+        transition: 0.3s;
+        cursor: neofetch;
+        &:hover {
+          background-color: $secondary;
+          color: white;
+        }
+      }
+    }
+  }
+}
+.container-form {
+  box-shadow: 0 0 5px rgba(175, 173, 173, 0.5);
+  margin: 10px;
+  padding: 5px 10px;
+  padding-bottom: 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 500px;
+  h1 {
+    color: $secondary;
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+    span {
+      color: #333;
+    }
+  }
+  table {
+    font-size: 12px;
+    width: 100%;
+    td {
+      padding: 7px;
+      input {
+        color: #333;
+        box-sizing: border-box;
+        font-size: 12px;
+        width: 100%;
+        padding: 7px 10px;
+        outline: none;
+        border-radius: 5px;
+        border: 1px solid $secondary;
+      }
+    }
+  }
+  .form-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    button {
+      font-size: 12px;
+      padding: 10px 50px;
+      border: none;
+      background-color: $secondary;
+      color: white;
+      border-radius: 2px;
+      box-shadow: 0px 0px 1px #333;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #333;
+        color: white;
+      }
+    }
+  }
+  .container-login {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    place-content: center;
+    form {
+      margin-top: 10px;
+      width: 400px;
+      p {
+        font-size: 12px;
+        color: red;
+        text-align: center;
+        padding-top: 20px;
+      }
+    }
+  }
+
+  .btn-link {
+    font-size: 14px;
+    color: red;
+    text-align: center;
+    cursor: pointer;
+  }
+  textarea {
+    color: #333;
+    box-sizing: border-box;
+    font-size: 12px;
+    width: 100%;
+    padding: 7px 10px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid $secondary;
+    resize: none;
+  }
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 12px;
+  color: #333;
+  span {
+    color: $secondary;
+    font-weight: bold;
+  }
+}
+
+// Login
+.container-login-admin {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    font-size: 25px;
+    span {
+      color: $secondary;
+    }
+    margin-bottom: 15px;
+  }
+  .container-login {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    place-content: center;
+    form {
+      border-radius: 5px;
+      padding: 20px;
+      margin-top: 10px;
+      width: 400px;
+      box-shadow: 0px 0px 3px $secondary;
+      h1 {
+        font-size: 18px;
+        border-left: 2px solid $secondary;
+        padding-left: 7px;
+        margin-bottom: 20px;
+      }
+      table {
+        font-size: 12px;
+        width: 100%;
+        td {
+          padding: 7px;
+          input {
+            color: #333;
+            box-sizing: border-box;
+            font-size: 12px;
+            width: 100%;
+            padding: 7px 10px;
+            outline: none;
+            border-radius: 5px;
+            border: 1px solid $secondary;
+          }
+        }
+      }
+      .form-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        button {
+          font-size: 12px;
+          padding: 10px 50px;
+          border: none;
+          background-color: $secondary;
+          color: white;
+          border-radius: 2px;
+          box-shadow: 0px 0px 1px #333;
+          cursor: pointer;
+          &:hover {
+            background-color: #333;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Admin
+.header-admin {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  h1 {
+    font-size: 25px;
+    span {
+      color: $secondary;
+    }
+  }
+}
+
+.data-items {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+  thead {
+    background-color: #333;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+    td {
+      padding: 15px;
+    }
+  }
+  td {
+    cursor: pointer;
+  }
+  tr:nth-child(2n) {
+    td {
+      background-color: #eee;
+    }
+  }
+}
