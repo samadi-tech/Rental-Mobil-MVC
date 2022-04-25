@@ -1,8 +1,9 @@
 <?php
 
-namespace SamtechSkripsi\Middleware;
+namespace SamTech\Middleware;
 
-interface Middleware{
+interface Middleware
+{
 
-    function before():void;
+    function before(): void;
 }

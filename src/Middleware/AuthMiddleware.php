@@ -1,17 +1,17 @@
 <?php
 
-namespace SamtechSkripsi\Middleware;
+namespace SamTech\Middleware;
 
-class AuthMiddleware implements Middleware{
-function before():void{
+class AuthMiddleware implements Middleware
+{
+    function before(): void
+    {
 
-    session_start();
+        session_start();
 
-    if(!isset($_SESSION['user'])){
-        header("Location: /login");
-        exit();
+        if (!isset($_SESSION['user'])) {
+            header("Location: /login");
+            exit();
+        }
     }
-
-   
-}
 }

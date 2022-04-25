@@ -1,8 +1,8 @@
 <?php
 
-namespace SamtechSkripsi\Controller;
+namespace SamTech\Controller;
 
-use SamtechSkripsi\App\View;
+use SamTech\App\View;
 
 class LoginController
 {

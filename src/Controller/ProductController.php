@@ -1,10 +1,12 @@
 <?php
 
-namespace SamtechSkripsi\Controller;
+namespace SamTech\Controller;
 
-Class ProductController{
+class ProductController
+{
 
-    function Category(string $productID,string $category){
+    function Category(string $productID, string $category)
+    {
         echo "Product $productID, Category $category";
     }
 }

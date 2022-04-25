@@ -1,15 +1,15 @@
 {
-    "name": "samadi/samtech-skripsi",
-    "description": "Project skipsi ADI NUGROHO 2020804171 | Absen Online IPEM",
+    "name": "samadi/samtech-rental",
+    "description": "Project ADI NUGROHO 2020804171 | Rental Mobil",
     "type": "project",
     "autoload": {
         "psr-4": {
-            "SamtechSkripsi\\": "src/"
+            "SamTech\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SamtechSkripsi\\":"test/"
+            "SamTech\\":"test/"
         }
     },
     "authors": [

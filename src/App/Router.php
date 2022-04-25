@@ -1,6 +1,6 @@
 <?php
 
-namespace SamtechSkripsi\App;
+namespace SamTech\App;
 
 class Router
 {

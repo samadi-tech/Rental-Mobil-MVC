@@ -1,12 +1,12 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use SamtechSkripsi\App\Router;
-use SamtechSkripsi\Controller\AdminController;
-use SamtechSkripsi\Controller\HomeController;
-use SamtechSkripsi\Controller\LoginController;
-// use SamtechSkripsi\Controller\ProductController;
-// use SamtechSkripsi\Middleware\AuthMiddleware;
+use SamTech\App\Router;
+use SamTech\Controller\AdminController;
+use SamTech\Controller\HomeController;
+use SamTech\Controller\LoginController;
+// use SamTech\Controller\ProductController;
+// use SamTech\Middleware\AuthMiddleware;
 
 
 Router::add("GET", "/", HomeController::class, "index",);
