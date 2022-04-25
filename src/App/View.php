@@ -9,7 +9,7 @@ class View
     {
         require __DIR__ . "/Constant.php";
         require __DIR__ . "/../View/Template/header.php";
-        require __DIR__ . "/../View/Template/jumbotron.php";
+        require __DIR__ . "/../View/Template/nav-home.php";
         require __DIR__ . "/../View/" . $view . ".php";
         require __DIR__ . "/../View/Template/footer.php";
     }
@@ -26,7 +26,7 @@ class View
     {
         require __DIR__ . "/Constant.php";
         require __DIR__ . "/../View/Template/header.php";
-        require __DIR__ . "/../View/Template/navbar.php";
+        require __DIR__ . "/../View/Template/nav-admin.php";
         require __DIR__ . "/../View/" . $view . ".php";
         require __DIR__ . "/../View/Template/footer.php";
     }

@@ -9,4 +9,5 @@ function NavbarToggle() {
 
 $(document).ready(function () {
   NavbarToggle();
+  alert("dvhdhvjds");
 });

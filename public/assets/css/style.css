@@ -13,18 +13,243 @@
   height: 100px;
   background-color: rgb(243, 243, 243);
 }
-.header h1 {
+.header .left-header .title-header {
   padding-left: 10px;
   font-size: 2vmax;
   color: #333;
 }
-.header h1 span {
+.header .left-header .title-header span {
   color: rgb(255, 69, 0);
 }
-.header p {
-  padding: 0 10px;
+.header .right-header {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7px;
+}
+.header .right-header p {
   font-size: 0.8vmax;
   color: #333;
+}
+
+.jumbotron {
+  position: relative;
+  background-image: url("../img/rental.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+}
+.jumbotron::after {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  content: "";
+  position: absolute;
+  background-color: rgba(83, 74, 74, 0.3);
+}
+
+.container-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  height: 100px;
+  padding: 5px;
+  margin: 5px;
+}
+.container-main .title-main {
+  color: rgb(255, 69, 0);
+  font-size: 22px;
+  text-align: center;
+}
+.container-main p {
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+}
+
+.container-card {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 5px;
+  margin-top: 20px;
+}
+.container-card .cards {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0px 0px 3px rgb(172, 167, 167);
+}
+.container-card .cards .card-pic {
+  height: 200px;
+  width: 100%;
+  background-color: #333;
+  overflow: hidden;
+}
+.container-card .cards .card-pic img {
+  height: 200px;
+  width: 100%;
+}
+.container-card .cards .card-list {
+  width: 100%;
+}
+.container-card .cards .card-list .title-card {
+  font-size: 15px;
+  text-align: center;
+  padding: 3px;
+  color: rgb(255, 69, 0);
+}
+.container-card .cards .card-list .card-table {
+  font-size: 12px;
+}
+.container-card .cards .card-list .card-table td {
+  padding: 3px;
+}
+.container-card .cards .card-list .card-table span {
+  font-weight: bold;
+  color: rgb(255, 69, 0);
+}
+.container-card .cards .card-list p {
+  text-align: left;
+  margin-top: 10px;
+  color: red;
+  font-size: 8px;
+}
+.container-card .cards .card-btn {
+  margin-top: 10px;
+}
+.container-card .cards .card-btn button {
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 10px 25px;
+  border: 2px solid rgb(255, 69, 0);
+  transition: 0.3s;
+  cursor: neofetch;
+}
+.container-card .cards .card-btn button:hover {
+  background-color: rgb(255, 69, 0);
+  color: white;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 12px;
+  color: #333;
+}
+footer span {
+  color: rgb(255, 69, 0);
+  font-weight: bold;
+}
+
+.container-login-admin {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.container-login-admin h1 {
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+.container-login-admin h1 span {
+  color: rgb(255, 69, 0);
+}
+.container-login-admin .container-login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  place-content: center;
+}
+.container-login-admin .container-login form {
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 10px;
+  width: 400px;
+  margin: 3px;
+  box-shadow: 0px 0px 3px rgb(255, 69, 0);
+}
+.container-login-admin .container-login form h1 {
+  font-size: 18px;
+  border-left: 2px solid rgb(255, 69, 0);
+  padding-left: 7px;
+  margin-bottom: 20px;
+}
+.container-login-admin .container-login form table {
+  font-size: 12px;
+  width: 100%;
+}
+.container-login-admin .container-login form table td {
+  padding: 7px;
+}
+.container-login-admin .container-login form table td input {
+  color: #333;
+  box-sizing: border-box;
+  font-size: 12px;
+  width: 100%;
+  padding: 7px 10px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 69, 0);
+}
+.container-login-admin .container-login form .form-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  box-sizing: border-box;
+}
+.container-login-admin .container-login form .form-btn button {
+  font-size: 12px;
+  padding: 10px 50px;
+  border: none;
+  background-color: rgb(255, 69, 0);
+  color: white;
+  border-radius: 2px;
+  box-shadow: 0px 0px 1px #333;
+  cursor: pointer;
+}
+.container-login-admin .container-login form .form-btn button:hover {
+  background-color: #333;
+  color: white;
+}
+
+.data-items {
+  margin-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+.data-items table {
+  overflow-wrap: anywhere;
+}
+.data-items table thead {
+  background-color: #333;
+  font-size: 12px;
+  color: white;
+  font-weight: bold;
+}
+.data-items table thead td {
+  padding: 15px;
+}
+.data-items table tr td {
+  font-size: 11px;
+  cursor: pointer;
+}
+.data-items table tr:nth-child(2n) td {
+  background-color: #eee;
 }
 
 .navbar {
@@ -71,7 +296,7 @@
   transform: rotate(90deg);
   background-color: rgb(255, 69, 0);
 }
-.navbar ul {
+.navbar .menu-nav {
   width: 100%;
   height: 100%;
   display: flex;
@@ -79,25 +304,25 @@
   display: none;
   padding-left: 50px;
 }
-.navbar ul li {
+.navbar .menu-nav .list-nav {
   list-style: none;
   height: 100%;
   padding: 0 25px;
 }
-.navbar ul li a {
+.navbar .menu-nav .list-nav a {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   color: rgb(243, 243, 243);
 }
-.navbar ul .active {
+.navbar .menu-nav .active {
   background-color: #333;
 }
-.navbar ul li:hover {
+.navbar .menu-nav .list-nav:hover {
   background-color: #333;
 }
 .navbar .menu-active {
@@ -111,7 +336,7 @@
   background-color: #333;
   width: 100%;
 }
-.navbar .menu-active li {
+.navbar .menu-active .list-nav {
   padding: 10px 0;
 }
 
@@ -119,112 +344,13 @@
   .navbar .nav-toggle {
     display: none;
   }
-  .navbar ul {
+  .navbar .menu-nav {
     display: flex;
   }
+  .navbar .menu-nav a {
+    font-size: 12px;
+  }
 }
-.jumbotron {
-  position: relative;
-  background-image: url("../img/rental.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 500px;
-}
-.jumbotron::after {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  content: "";
-  position: absolute;
-  background-color: rgba(83, 74, 74, 0.3);
-}
-
-.title-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  height: 100px;
-  padding: 5px;
-  margin: 5px;
-}
-.title-main h1 {
-  color: rgb(255, 69, 0);
-  font-size: 22px;
-  text-align: center;
-}
-.title-main p {
-  font-size: 12px;
-  color: #333;
-  text-align: center;
-}
-
-.container-card {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin: 5px;
-  margin-top: 20px;
-}
-.container-card .cards {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 10px;
-  box-shadow: 0px 0px 3px rgb(172, 167, 167);
-}
-.container-card .cards .card-pic {
-  height: 200px;
-  width: 100%;
-  background-color: #333;
-  border-radius: 3px;
-}
-.container-card .cards .card-list {
-  width: 100%;
-}
-.container-card .cards .card-list h1 {
-  font-size: 15px;
-  text-align: center;
-  padding: 3px;
-  color: rgb(255, 69, 0);
-}
-.container-card .cards .card-list table {
-  font-size: 12px;
-}
-.container-card .cards .card-list table td {
-  padding: 3px;
-}
-.container-card .cards .card-list table span {
-  font-weight: bold;
-  color: rgb(255, 69, 0);
-}
-.container-card .cards .card-list p {
-  text-align: left;
-  margin-top: 10px;
-  color: red;
-  font-size: 8px;
-}
-.container-card .cards .card-btn {
-  margin-top: 10px;
-}
-.container-card .cards .card-btn button {
-  border-radius: 5px;
-  font-size: 12px;
-  padding: 10px 25px;
-  border: 2px solid rgb(255, 69, 0);
-  transition: 0.3s;
-  cursor: neofetch;
-}
-.container-card .cards .card-btn button:hover {
-  background-color: rgb(255, 69, 0);
-  color: white;
-}
-
 .container-form {
   box-shadow: 0 0 5px rgba(175, 173, 173, 0.5);
   margin: 10px;
@@ -236,6 +362,9 @@
   justify-content: center;
   flex-direction: column;
   min-height: 500px;
+}
+.container-form form {
+  box-sizing: border-box;
 }
 .container-form h1 {
   color: rgb(255, 69, 0);
@@ -294,6 +423,7 @@
 .container-form .container-login form {
   margin-top: 10px;
   width: 400px;
+  margin: 3px;
 }
 .container-form .container-login form p {
   font-size: 12px;
@@ -319,123 +449,10 @@
   resize: none;
 }
 
-footer {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 12px;
-  color: #333;
-}
-footer span {
-  color: rgb(255, 69, 0);
-  font-weight: bold;
-}
-
-.container-login-admin {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.container-login-admin h1 {
-  font-size: 25px;
-  margin-bottom: 15px;
-}
-.container-login-admin h1 span {
-  color: rgb(255, 69, 0);
-}
-.container-login-admin .container-login {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  place-content: center;
-}
-.container-login-admin .container-login form {
-  border-radius: 5px;
-  padding: 20px;
-  margin-top: 10px;
-  width: 400px;
-  box-shadow: 0px 0px 3px rgb(255, 69, 0);
-}
-.container-login-admin .container-login form h1 {
-  font-size: 18px;
-  border-left: 2px solid rgb(255, 69, 0);
-  padding-left: 7px;
-  margin-bottom: 20px;
-}
-.container-login-admin .container-login form table {
-  font-size: 12px;
-  width: 100%;
-}
-.container-login-admin .container-login form table td {
-  padding: 7px;
-}
-.container-login-admin .container-login form table td input {
-  color: #333;
-  box-sizing: border-box;
-  font-size: 12px;
-  width: 100%;
-  padding: 7px 10px;
-  outline: none;
-  border-radius: 5px;
-  border: 1px solid rgb(255, 69, 0);
-}
-.container-login-admin .container-login form .form-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-}
-.container-login-admin .container-login form .form-btn button {
-  font-size: 12px;
-  padding: 10px 50px;
-  border: none;
-  background-color: rgb(255, 69, 0);
-  color: white;
-  border-radius: 2px;
-  box-shadow: 0px 0px 1px #333;
-  cursor: pointer;
-}
-.container-login-admin .container-login form .form-btn button:hover {
-  background-color: #333;
-  color: white;
-}
-
-.header-admin {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  padding-left: 15px;
-}
-.header-admin h1 {
-  font-size: 25px;
-}
-.header-admin h1 span {
-  color: rgb(255, 69, 0);
-}
-
-.data-items {
-  margin-top: 20px;
-  width: 100%;
-  text-align: center;
-}
-.data-items thead {
-  background-color: #333;
-  font-size: 13px;
-  color: white;
-  font-weight: bold;
-}
-.data-items thead td {
-  padding: 15px;
-}
-.data-items td {
-  cursor: pointer;
-}
-.data-items tr:nth-child(2n) td {
-  background-color: #eee;
+@media (max-width: 770px) {
+  .container-form .form-btn button {
+    padding: 10px 20px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

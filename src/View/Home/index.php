@@ -1,11 +1,13 @@
 <!-- Cards -->
 <div class="container-card">
     <div class="cards">
-        <div class="card-pic"></div>
+        <div class="card-pic">
+            <img src="<?= BASEURL; ?>/../assets/img/rental.jpeg" alt="" srcset="">
+        </div>
 
         <div class="card-list">
-            <h1>Toyota Avanza</h1>
-            <table>
+            <h1 class="title-card">Toyota Avanza</h1>
+            <table class="card-table">
                 <tr>
                     <td>
                 <tr>
@@ -53,13 +55,17 @@
             <button>Book Now</button>
         </div>
     </div>
+
 
     <div class="cards">
-        <div class="card-pic"></div>
+        <div class="card-pic">
+            <img src="<?= BASEURL; ?>/../assets/img/25694.png" alt="" srcset="">
+
+        </div>
 
         <div class="card-list">
-            <h1>Toyota Avanza</h1>
-            <table>
+            <h1 class="title-card">Toyota Avanza</h1>
+            <table class="card-table">
                 <tr>
                     <td>
                 <tr>
@@ -107,6 +113,4 @@
             <button>Book Now</button>
         </div>
     </div>
-</div>
-</div>
 </div>

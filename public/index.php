@@ -6,7 +6,7 @@ use SamtechSkripsi\Controller\AdminController;
 use SamtechSkripsi\Controller\HomeController;
 use SamtechSkripsi\Controller\LoginController;
 // use SamtechSkripsi\Controller\ProductController;
-use SamtechSkripsi\Middleware\AuthMiddleware;
+// use SamtechSkripsi\Middleware\AuthMiddleware;
 
 
 Router::add("GET", "/", HomeController::class, "index",);
