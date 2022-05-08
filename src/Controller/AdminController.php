@@ -2,52 +2,52 @@
 
 namespace SamTech\Controller;
 
+use PDOStatement;
 use SamTech\App\View;
+use SamTech\Config\Database;
+use SamTech\Exceptions\ValidationException;
+use SamTech\Model\AdminRegisterReq;
+use SamTech\Repository\AdminRepository;
+use SamTech\Service\AdminService;
 
 class AdminController
 {
-    function index()
+    private AdminService $adminService;
+
+    public function __construct()
     {
-        View::ViewAdmin("Admin/index", [
-            "title" => "Adminitrator | Rental Mobil | SamTech",
-            "content" => "Halaman index HOME"
-
-        ]);
-    }
-
-    function members()
-    {
-        View::ViewAdmin("Admin/members", [
-            "title" => "Adminitrator | Rental Mobil | SamTech",
-            "content" => "Halaman index HOME"
-
-        ]);
-    }
-
-    function transaksi()
-    {
-        View::ViewAdmin("Admin/transaksi", [
-            "title" => "Adminitrator | Rental Mobil | SamTech",
-            "content" => "Halaman index HOME"
-
-        ]);
-    }
-
-    function cars()
-    {
-        View::ViewAdmin("Admin/cars", [
-            "title" => "Adminitrator | Rental Mobil | SamTech",
-            "content" => "Halaman index HOME"
-
-        ]);
+        $con = Database::getConection();
+        $adminRepo = new AdminRepository($con);
+        $this->adminService = new AdminService($adminRepo);
     }
 
     function admin()
     {
         View::ViewAdmin("Admin/admin", [
             "title" => "Adminitrator | Rental Mobil | SamTech",
-            "content" => "Halaman index HOME"
+            "error" => ""
 
         ]);
+    }
+
+
+    public function postAdmin()
+    {
+        $request = new AdminRegisterReq();
+        $request->id = $_POST['id'];
+        $request->username = $_POST['username'];
+        $request->password = $_POST['password'];
+        if (isset($_POST['tambah'])) {
+            try {
+                $this->adminService->register($request);
+                View::redirect("/admin/admin");
+            } catch (ValidationException $exception) {
+                View::ViewAdmin("Admin/admin", [
+                    "title" => "Adminitrator | Rental Mobil | SamTech",
+                    "error" => $exception->getMessage()
+
+                ]);
+            }
+        }
     }
 }

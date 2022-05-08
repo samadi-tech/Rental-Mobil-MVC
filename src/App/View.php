@@ -30,4 +30,11 @@ class View
         require __DIR__ . "/../View/" . $view . ".php";
         require __DIR__ . "/../View/Template/footer.php";
     }
+
+    public static function redirect(string $url)
+    {
+        $baseURL = BASEURL;
+        header("Location:  $baseURL/$url");
+        exit();
+    }
 }

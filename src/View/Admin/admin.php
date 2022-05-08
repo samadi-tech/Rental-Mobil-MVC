@@ -4,26 +4,26 @@
     <hr />
 
     <div class="container-register">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form method="POST">
             <table>
                 <tr>
+                    <td>ID</td>
+                    <td><input type="text" name="id" id="id" value="<?= $_POST["id"] ?? ""; ?>" autocomplete="none"></td>
+                </tr>
+                <tr>
                     <td>Username</td>
-                    <td><input type="text" /></td>
+                    <td><input type="text" name="username" id="username" value="<?= $_POST["username"] ?? ""; ?> "></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" /></td>
-                </tr>
-                <tr>
-                    <td>Konfirmasi Password</td>
-                    <td><input type="password" name="" id="" /></td>
+                    <td><input type="password" name="password" id="password" /></td>
                 </tr>
 
             </table>
             <div class="form-btn">
-                <button type="submit">Tambah</button>
-                <button type="submit">Ubah</button>
-                <button type="submit">Hapus</button>
+                <button type="submit" name="tambah">Tambah</button>
+                <button type="submit" name="ubah">Ubah</button>
+                <button type="submit" name="hapus">Hapus</button>
             </div>
         </form>
     </div>

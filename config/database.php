@@ -5,12 +5,12 @@ function getDatabase(): array
     return [
         "database" => [
             "test" => [
-                "url" => "mysql:host=localhost:3306,dbname=SamtechSkripsi",
+                "url" => "mysql:host=localhost:3308,dbname=SamTechRental",
                 "username" => "root",
                 "password" => ""
             ],
-            "project" => [
-                "url" => "mysql:host=localhost:3306,dbname=SamtechSkripsi",
+            "prod" => [
+                "url" => "mysql:host=localhost:3308,dbname=SamTechRental",
                 "username" => "root",
                 "password" => ""
             ]

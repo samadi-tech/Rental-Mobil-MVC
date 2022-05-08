@@ -1,6 +1,6 @@
 <?php
 
-namespace SamTech;
+namespace SamTech\Config;
 
 use PHPUnit\Framework\TestCase;
 use SamTech\Config\Database;
