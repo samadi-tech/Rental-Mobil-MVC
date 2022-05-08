@@ -1,6 +1,6 @@
 <?php
 
-namespace SamTech\Model;
+namespace SamTech\Model\Response;
 
 use SamTech\Domain\Transaksi;
 

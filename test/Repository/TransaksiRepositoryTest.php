@@ -22,18 +22,18 @@ class TransaksiRepositoryTest extends TestCase
     {
         $transaksi = new Transaksi();
         $transaksi->id = 44;
-        $transaksi->id_member = 34;
-        $transaksi->id_mobil = 34;
-        $transaksi->tgl_pinjam = "2022-05-09";
-        $transaksi->tgl_kembali = "2022-05-09";
-        $transaksi->tarif = 0;
+        $transaksi->idmember = 12;
+        $transaksi->idmobil = 23;
+        $transaksi->tglpinjam = "2022-05-09";
+        $transaksi->tglkembali = "2022-05-09";
+        $transaksi->tarif = 2000000;
 
         $this->transRepo->save($transaksi);
 
         $result = $this->transRepo->findById($transaksi->id);
 
         self::assertEquals($transaksi->id, $result->id);
-        self::assertEquals($transaksi->id_member, $result->id_member);
-        self::assertEquals($transaksi->id_mobil, $result->id_mobil);
+        self::assertEquals($transaksi->idmember, $result->idmember);
+        self::assertEquals($transaksi->idmobil, $result->idmobil);
     }
 }

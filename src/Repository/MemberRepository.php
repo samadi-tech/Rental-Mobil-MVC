@@ -15,16 +15,42 @@ class MemberRepository
 
     public function save(Member $member): Member
     {
-        $statement = $this->connection->prepare("INSERT INTO SamTechRental.members(id,username,password,nama,ttl,alamat,telepon,image) VALUES (?,?,?,?,?,?,?,?)");
+        $statement = $this->connection->prepare("
+        INSERT INTO SamTechRental.members (
+            id,
+            username,
+            password,
+            nama,
+            ttl,
+            alamat,
+            telepon,
+            image) VALUES (?,?,?,?,?,?,?,?)");
+
         $statement->execute([
-            $member->id, $member->username, $member->password, $member->nama, $member->ttl, $member->alamat, $member->telepon, $member->image
+            $member->id,
+            $member->username,
+            $member->password,
+            $member->nama,
+            $member->ttl,
+            $member->alamat,
+            $member->telepon,
+            $member->image
         ]);
         return $member;
     }
 
     public function findById(int $id): ?Member
     {
-        $statement = $this->connection->prepare("SELECT id,username,password,nama,ttl,alamat,telepon,image FROM SamTechRental.members where id=?");
+        $statement = $this->connection->prepare("
+        SELECT 
+        id,
+        username,
+        password,
+        nama,
+        ttl,
+        alamat,
+        telepon,
+        image FROM SamTechRental.members where id=?");
         $statement->execute([$id]);
 
         try {

@@ -16,25 +16,47 @@ class TransaksiRepository
 
     public function save(Transaksi $transaksi): Transaksi
     {
-        $sql = $this->connection->prepare("INSERT INTO SamTechRental.transaksi (id_transaksi,id_member,id_mobil,tgl_pinjam,tgl_kembali,tarif_total) VALUES (?,?,?,?,?,?)");
-        $sql->execute([$transaksi->id, $transaksi->id_member, $transaksi->id_mobil, $transaksi->tgl_pinjam, $transaksi->tgl_kembali, $transaksi->tarif]);
+        $sql = $this->connection->prepare("
+        INSERT INTO SamTechRental.transaksi (
+            id,
+            id_member,
+            id_mobil,
+            tgl_pinjam,
+            tgl_kembali,
+            tarif_total) VALUES (?,?,?,?,?,?)");
+
+        $sql->execute([
+            $transaksi->id,
+            $transaksi->idmember,
+            $transaksi->idmobil,
+            $transaksi->tglpinjam,
+            $transaksi->tglkembali,
+            $transaksi->tarif
+        ]);
 
         return $transaksi;
     }
 
-    public function findById(int $id): ?Transaksi
+    public function findById(string $id): ?Transaksi
     {
-        $statement = $this->connection->prepare("SELECT id_transaksi,id_member,id_mobil,tgl_pinjam,tgl_kembali,tarif_total FROM SamTechRental.transaksi where id_transaksi=?");
+        $statement = $this->connection->prepare("
+        SELECT id,
+        id_member,
+        id_mobil,
+        tgl_pinjam,
+        tgl_kembali,
+        tarif_total FROM SamTechRental.transaksi where id=?");
+
         $statement->execute([$id]);
 
         try {
             if ($row = $statement->fetch()) {
                 $transaksi = new Transaksi();
-                $transaksi->id = $row['id_transaksi'];
-                $transaksi->id_member = $row['id_member'];
-                $transaksi->id_mobil = $row['id_mobil'];
-                $transaksi->tgl_pinjam = $row['tgl_pinjam'];
-                $transaksi->tgl_kembali = $row['tgl_kembali'];
+                $transaksi->id = $row['id'];
+                $transaksi->idmember = $row['id_member'];
+                $transaksi->idmobil = $row['id_mobil'];
+                $transaksi->tglpinjam = $row['tgl_pinjam'];
+                $transaksi->tglkembali = $row['tgl_kembali'];
                 $transaksi->tarif = $row['tarif_total'];
 
                 return $transaksi;

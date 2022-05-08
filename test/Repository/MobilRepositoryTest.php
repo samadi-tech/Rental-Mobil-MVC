@@ -20,13 +20,13 @@ class MobilRepositoryTest extends TestCase
     {
         $mobil = new Mobil();
         $mobil->id = 44;
-        $mobil->nama = "samadi";
-        $mobil->dimensi = "rahasia";
+        $mobil->nama = "Avanza";
+        $mobil->dimensi = "30";
         $mobil->bbm = "";
         $mobil->merek = "";
         $mobil->mesin = "";
         $mobil->tahun = "";
-        $mobil->tarif = 0;
+        $mobil->biaya = 0;
         $mobil->image = "";
 
         $this->mobilRepository->save($mobil);
@@ -40,7 +40,7 @@ class MobilRepositoryTest extends TestCase
 
     public function testFindByIdNotFound()
     {
-        $mobil = $this->mobilRepository->findById("122");
+        $mobil = $this->mobilRepository->findById(12);
 
         self::assertNull($mobil);
     }

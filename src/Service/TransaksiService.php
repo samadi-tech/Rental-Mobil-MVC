@@ -5,8 +5,8 @@ namespace SamTech\Service;
 use SamTech\Config\Database;
 use SamTech\Domain\Transaksi;
 use SamTech\Exceptions\ValidationTransaksi;
-use SamTech\Model\TransaksiAddReq;
-use SamTech\Model\TransaksiAddRes;
+use SamTech\Model\Request\TransaksiAddReq;
+use SamTech\Model\Response\TransaksiAddRes;
 use SamTech\Repository\TransaksiRepository;
 
 class TransaksiService
@@ -33,10 +33,10 @@ class TransaksiService
 
             $transaksi = new Transaksi();
             $transaksi->id = $request->id;
-            $transaksi->id_member = $request->id_member;
-            $transaksi->id_mobil = $request->id_mobil;
-            $transaksi->tgl_pinjam = $request->tgl_pinjam;
-            $transaksi->tgl_kembali = $request->tgl_kembali;
+            $transaksi->idmember = $request->idmember;
+            $transaksi->idmobil = $request->idmobil;
+            $transaksi->tglpinjam = $request->tglpinjam;
+            $transaksi->tglkembali = $request->tglkembali;
             $transaksi->tarif = $request->tarif;
 
 
@@ -56,7 +56,7 @@ class TransaksiService
 
     public function validateTransAddReq(TransaksiAddReq $request)
     {
-        if ($request->id == null || $request->id_member == null  || $request->id_mobil == null) {
+        if ($request->id == "" || $request->idmember == ""  || $request->idmobil == "") {
             throw new ValidationTransaksi("Fill cannot blank");
         }
     }

@@ -3,31 +3,37 @@
     <h1>Transaksi</h1>
     <hr />
 
-    <form action="" method="post">
-        <table>
-            <tr>
-                <td>Jenis Mobil</td>
-                <td><input type="text" /></td>
-            </tr>
-            <tr>
-                <td>Nama Peminjam</td>
-                <td><input type="text" readonly /></td>
-            </tr>
-            <tr>
-                <td>Tanggal Pemesanan</td>
-                <td><input type="date" name="" id="" /></td>
-            </tr>
-            <tr>
-                <td>Tanggal Kembali</td>
-                <td><input type="date" name="" id="" /></td>
-            </tr>
-            <tr>
-                <td>Total</td>
-                <td><input type="text" readonly /></td>
-            </tr>
-        </table>
-        <div class="form-btn">
-            <button type="submit">PESAN</button>
-        </div>
-    </form>
+    <div class="container-register">
+        <form action="" method="post" enctype="multipart/form-data">
+            <table>
+                <tr>
+                    <td>ID Transaksi</td>
+                    <td><input type="text" name="id" id="id" /></td>
+                </tr>
+                <tr>
+                    <td>ID Member</td>
+                    <td><input type="text" name="idmember" id="idmember" /></td>
+                </tr>
+                <tr>
+                    <td>ID Mobil</td>
+                    <td><input type="text" name="idmobil" id="idmobil" /></td>
+                </tr>
+                <tr>
+                    <td>Tanggal Pinjam</td>
+                    <td><input type="date" name="tglpinjam" id="tglpinjam" /></td>
+                </tr>
+                <tr>
+                    <td>Tanggal Kembali</td>
+                    <td><input type="date" name="tglkembali" id="tglkembali" /></td>
+                </tr>
+                <tr>
+                    <td>Total Tarif</td>
+                    <td><input type="text" name="tarif" id="tarif" /></td>
+                </tr>
+            </table>
+            <div class="form-btn">
+                <button type="submit" name="pesan" id="pesan">Pesan</button>
+            </div>
+        </form>
+    </div>
 </div>

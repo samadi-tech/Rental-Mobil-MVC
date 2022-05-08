@@ -1,6 +1,6 @@
 <?php
 
-namespace SamTech\Model;
+namespace SamTech\Model\Request;
 
 class AdminRegisterReq
 {

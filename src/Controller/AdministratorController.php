@@ -23,31 +23,4 @@ class AdministratorController
 
         ]);
     }
-
-    function transaksi()
-    {
-        View::ViewAdmin("Admin/transaksi", [
-            "title" => "Adminitrator | Rental Mobil | SamTech",
-            "content" => "Halaman index HOME"
-
-        ]);
-    }
-
-    function cars()
-    {
-        View::ViewAdmin("Admin/cars", [
-            "title" => "Adminitrator | Rental Mobil | SamTech",
-            "content" => "Halaman index HOME"
-
-        ]);
-    }
-
-    function admin()
-    {
-        View::ViewAdmin("Admin/admin", [
-            "title" => "Adminitrator | Rental Mobil | SamTech",
-            "content" => "Halaman index HOME"
-
-        ]);
-    }
 }

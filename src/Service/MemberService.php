@@ -5,8 +5,8 @@ namespace SamTech\Service;
 use SamTech\Config\Database;
 use SamTech\Domain\Member;
 use SamTech\Exceptions\ValidationMember;
-use SamTech\Model\MemberRegisterReq;
-use SamTech\Model\MemberRegisterRes;
+use SamTech\Model\Request\MemberRegisterReq;
+use SamTech\Model\Response\MemberRegisterRes;
 use SamTech\Repository\MemberRepository;
 
 class MemberService
@@ -28,7 +28,7 @@ class MemberService
             $member = $this->memberRepo->findById($request->id);
 
             if ($member != null) {
-                throw new ValidationMember("admin udah ada");
+                throw new ValidationMember("member udah ada");
             }
 
             $member = new Member();

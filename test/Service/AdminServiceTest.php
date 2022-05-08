@@ -3,7 +3,7 @@
 namespace SamTech\Service;
 
 use PHPUnit\Framework\TestCase;
-use SamTech\Model\AdminRegisterReq;
+use SamTech\Model\Request\AdminRegisterReq;
 use SamTech\Config\Database;
 use SamTech\Domain\Admin;
 use SamTech\Exceptions\ValidationException;
@@ -26,7 +26,7 @@ class AdminServiceTest extends TestCase
     public function testRegisterSucces()
     {
         $request = new AdminRegisterReq();
-        $request->id = 7;
+        $request->id = 1;
         $request->username = "samadi";
         $request->password = "rahasia";
 
@@ -44,6 +44,7 @@ class AdminServiceTest extends TestCase
         $this->expectException(ValidationException::class);
 
         $request = new AdminRegisterReq();
+        $request->id = 23;
         $request->username = "";
         $request->password = "";
 
@@ -66,6 +67,6 @@ class AdminServiceTest extends TestCase
         $request->username = "samadi";
         $request->password = "rahasia";
 
-        $response = $this->adminService->register($request);
+        $this->adminService->register($request);
     }
 }

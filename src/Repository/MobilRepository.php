@@ -15,16 +15,35 @@ class MobilRepository
 
     public function save(Mobil $mobil): Mobil
     {
-        $statement = $this->connection->prepare("INSERT INTO SamTechRental.mobil(id,nama,dimensi,bbm,merek,mesin,tahun,tarif,image) VALUES (?,?,?,?,?,?,?,?,?)");
+        $statement = $this->connection->prepare("
+        INSERT INTO SamTechRental.mobil (
+            id,
+            nama,
+            merek,
+            bbm,
+            dimensi,
+            mesin,
+            tahun,
+            biaya,
+            image) VALUES (?,?,?,?,?,?,?,?,?)");
+
         $statement->execute([
-            $mobil->id, $mobil->nama, $mobil->merek, $mobil->dimensi, $mobil->bbm, $mobil->mesin, $mobil->tahun, $mobil->tarif, $mobil->image
+            $mobil->id,
+            $mobil->nama,
+            $mobil->merek,
+            $mobil->bbm,
+            $mobil->dimensi,
+            $mobil->mesin,
+            $mobil->tahun,
+            $mobil->biaya,
+            $mobil->image
         ]);
         return $mobil;
     }
 
     public function findById(int $id): ?mobil
     {
-        $statement = $this->connection->prepare("SELECT id,nama,dimensi,bbm,merek,mesin,tahun,tarif,image FROM SamTechRental.mobil where id=?");
+        $statement = $this->connection->prepare("SELECT id,nama,merek,bbm,dimensi,mesin,tahun,biaya,image FROM SamTechRental.mobil where id=?");
         $statement->execute([$id]);
 
         try {
@@ -32,12 +51,12 @@ class MobilRepository
                 $mobil = new Mobil();
                 $mobil->id = $row['id'];
                 $mobil->nama = $row['nama'];
-                $mobil->dimesi = $row['dimensi'];
-                $mobil->bbm = $row['bbm'];
                 $mobil->merek = $row['merek'];
+                $mobil->bbm = $row['bbm'];
+                $mobil->dimensi = $row['dimensi'];
                 $mobil->mesin = $row['mesin'];
                 $mobil->tahun = $row['tahun'];
-                $mobil->tarif = $row['tarif'];
+                $mobil->biaya = $row['biaya'];
                 $mobil->image = $row['image'];
                 return $mobil;
             } else {

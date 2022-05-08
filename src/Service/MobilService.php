@@ -5,8 +5,8 @@ namespace SamTech\Service;
 use SamTech\Config\Database;
 use SamTech\Domain\Mobil;
 use SamTech\Exceptions\ValidationMobil;
-use SamTech\Model\MobilRegisterReq;
-use SamTech\Model\MobilRegisterRes;
+use SamTech\Model\Request\MobilRegisterReq;
+use SamTech\Model\Response\MobilRegisterRes;
 use SamTech\Repository\MobilRepository;
 
 class MobilService
@@ -35,11 +35,11 @@ class MobilService
             $mobil->id = $request->id;
             $mobil->nama = $request->nama;
             $mobil->merek = $request->merek;
-            $mobil->dimensi = $request->dimensi;
             $mobil->bbm = $request->bbm;
+            $mobil->dimensi = $request->dimensi;
             $mobil->mesin = $request->mesin;
             $mobil->tahun = $request->tahun;
-            $mobil->tarif = $request->tarif;
+            $mobil->biaya = $request->biaya;
             $mobil->image = $request->image;
 
 

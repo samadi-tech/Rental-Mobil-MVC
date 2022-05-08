@@ -15,7 +15,7 @@ class AdminRepository
 
     public function save(Admin $admin): Admin
     {
-        $statement = $this->connection->prepare("INSERT INTO SamTechRental.admin(id_admin,username,password) VALUES (?,?,?)");
+        $statement = $this->connection->prepare("INSERT INTO SamTechRental.admin(id,username,password) VALUES (?,?,?)");
         $statement->execute([
             $admin->id, $admin->username, $admin->password
         ]);
@@ -24,13 +24,13 @@ class AdminRepository
 
     public function findById(int $id): ?Admin
     {
-        $statement = $this->connection->prepare("SELECT id_admin,username,password FROM SamTechRental.admin where id_admin=?");
+        $statement = $this->connection->prepare("SELECT id,username,password FROM SamTechRental.admin where id=?");
         $statement->execute([$id]);
 
         try {
             if ($row = $statement->fetch()) {
                 $admin = new Admin();
-                $admin->id = $row['id_admin'];
+                $admin->id = $row['id'];
                 $admin->username = $row['username'];
                 $admin->password = $row['password'];
 

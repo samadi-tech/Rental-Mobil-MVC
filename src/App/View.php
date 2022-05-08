@@ -31,7 +31,7 @@ class View
         require __DIR__ . "/../View/Template/footer.php";
     }
 
-    public static function redirect(string $url)
+    public static function Redirect(string $url)
     {
         $baseURL = BASEURL;
         header("Location:  $baseURL/$url");

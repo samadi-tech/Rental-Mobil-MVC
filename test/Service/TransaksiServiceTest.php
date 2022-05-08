@@ -20,25 +20,25 @@ class TransaksiServiceTest extends TestCase
         $this->transRepo = new TransaksiRepository($con);
         $this->transService = new TransaksiService($this->transRepo);
 
-        $this->transRepo->deleteAll();
+        // $this->transRepo->deleteAll();
     }
 
     public function testAddSuccess()
     {
         $request = new TransaksiAddReq();
-        $request->id = 7;
-        $request->id_member = 7;
-        $request->id_mobil = 7;
-        $request->tgl_pinjam = "2022-05-09";
-        $request->tgl_kembali = "2022-05-09";
+        $request->id = "7";
+        $request->idmember = "7";
+        $request->idmobil = "7";
+        $request->tglpinjam = "2022-05-09";
+        $request->tglkembali = "2022-05-09";
         $request->tarif = 0;
 
 
         $response = $this->transService->add($request);
 
         self::assertEquals($request->id, $response->transaksi->id);
-        self::assertEquals($request->id_member, $response->transaksi->id_member);
-        self::assertEquals($request->id_mobil, $response->transaksi->id_mobil);
+        self::assertEquals($request->idmember, $response->transaksi->idmember);
+        self::assertEquals($request->idmobil, $response->transaksi->idmobil);
     }
 
     public function testAddFailed()
@@ -48,10 +48,10 @@ class TransaksiServiceTest extends TestCase
 
         $request = new TransaksiAddReq();
         $request->id = null;
-        $request->id_member = null;
-        $request->id_mobil = null;
-        $request->tgl_pinjam = "2022-05-09";
-        $request->tgl_kembali = "2022-05-09";
+        $request->idmember = null;
+        $request->idmobil = null;
+        $request->tglpinjam = "2022-05-09";
+        $request->tglkembali = "2022-05-09";
         $request->tarif = 0;
 
 

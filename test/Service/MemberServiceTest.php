@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
 use SamTech\Config\Database;
 use SamTech\Domain\Member;
 use SamTech\Exceptions\ValidationMember;
-use SamTech\Model\MemberRegisterReq;
+use SamTech\Model\Request\MemberRegisterReq;
 use SamTech\Repository\MemberRepository;
 
 class MemberServiceTest extends TestCase
@@ -59,7 +59,7 @@ class MemberServiceTest extends TestCase
     public function testRegisterDuplicate()
     {
         $member = new Member();
-        $member->id = 23;
+        $member->id = 65;
         $member->username = "samadi";
         $member->password = "rahasia";
         $member->nama = "rahasia";
@@ -73,7 +73,7 @@ class MemberServiceTest extends TestCase
 
 
         $request = new MemberRegisterReq();
-        $request->id = 23;
+        $request->id = 65;
         $request->username = "samadi";
         $request->password = "rahasia";
         $request->nama = "";
@@ -82,6 +82,6 @@ class MemberServiceTest extends TestCase
         $request->telepon = "";
         $request->image = "";
 
-        $response = $this->memberService->register($request);
+        $this->memberService->register($request);
     }
 }

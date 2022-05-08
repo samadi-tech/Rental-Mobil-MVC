@@ -13,6 +13,7 @@ class AdminRepositoryTest extends TestCase
     protected function setUp(): void
     {
         $this->adminRepository = new AdminRepository(Database::getConection());
+
         $this->adminRepository->deleteAll();
     }
 

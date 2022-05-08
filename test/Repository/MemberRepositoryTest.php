@@ -39,7 +39,7 @@ class MemberRepositoryTest extends TestCase
 
     public function testFindByIdNotFound()
     {
-        $member = $this->memberRepository->findById("122");
+        $member = $this->memberRepository->findById(12);
 
         self::assertNull($member);
     }

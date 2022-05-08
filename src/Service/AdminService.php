@@ -3,8 +3,8 @@
 namespace SamTech\Service;
 
 use SamTech\Domain\Admin;
-use SamTech\Model\AdminRegisterReq;
-use SamTech\Model\AdminRegisterRes;
+use SamTech\Model\Request\AdminRegisterReq;
+use SamTech\Model\Response\AdminRegisterRes;
 use SamTech\Config\Database;
 use SamTech\Exceptions\ValidationException;
 use SamTech\Repository\AdminRepository;
@@ -52,7 +52,7 @@ class AdminService
 
     public function validateRegisterReq(AdminRegisterReq $request)
     {
-        if ($request->id == null || $request->username == ""  || $request->password == "") {
+        if ($request->id = null || $request->username == ""  || $request->password == "") {
             throw new ValidationException("id cannot blank");
         }
     }

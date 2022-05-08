@@ -21,7 +21,7 @@
         <li class="list-nav"><a href="<?= BASEURL; ?>/admin">HOME</a></li>
         <li class="list-nav"><a href="<?= BASEURL; ?>/admin/transaksi">Transaksi</a></li>
         <li class="list-nav"><a href="<?= BASEURL; ?>/admin/members">Data Members</a></li>
-        <li class="list-nav"><a href="<?= BASEURL; ?>/admin/cars">Data Mobil</a></li>
+        <li class="list-nav"><a href="<?= BASEURL; ?>/admin/mobil">Data Mobil</a></li>
         <li class="list-nav"><a href="<?= BASEURL; ?>/admin/admin">Data Admin</a></li>
     </ul>
 </div>
