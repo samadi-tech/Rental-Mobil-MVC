@@ -2,6 +2,7 @@
 
 namespace SamTech\Controller;
 
+use SamTech\App\Helper;
 use SamTech\App\View;
 use SamTech\Config\Database;
 use SamTech\Exceptions\ValidationMember;
@@ -29,6 +30,7 @@ class MemberController
 
     public function register()
     {
+
         $request = new MemberRegisterReq();
         $request->id = $_POST['id'];
         $request->username = $_POST['username'];
@@ -37,19 +39,8 @@ class MemberController
         $request->ttl = $_POST['ttl'];
         $request->alamat = $_POST['alamat'];
         $request->telepon = $_POST['telepon'];
-        $request->image = $_POST['image'];
+        $request->image = Helper::UploadGambar();
 
-        if (isset($_POST['tambah'])) {
-
-            try {
-                $this->member->register($request);
-            } catch (ValidationMember $exception) {
-                View::ViewAdmin("admin/members", [
-                    "title" => "Input Data Gagal | Rental Mobil | SamTech",
-                    "error" => $exception->getMessage()
-                ]);
-            }
-        }
 
         if (isset($_POST['register'])) {
 
@@ -58,6 +49,19 @@ class MemberController
                 View::Redirect("transaksi/login");
             } catch (ValidationMember $exception) {
                 View::ViewAdmin("transaksi/register", [
+                    "title" => "Input Data Gagal | Rental Mobil | SamTech",
+                    "error" => $exception->getMessage()
+                ]);
+            }
+        }
+
+        if (isset($_POST['tambah'])) {
+
+            try {
+                $this->member->register($request);
+                View::Redirect("admin/succes");
+            } catch (ValidationMember $exception) {
+                View::ViewAdmin("admin/members", [
                     "title" => "Input Data Gagal | Rental Mobil | SamTech",
                     "error" => $exception->getMessage()
                 ]);

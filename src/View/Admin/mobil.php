@@ -3,7 +3,7 @@
     <h1>Data Mobil</h1>
     <hr />
 
-    <div class="container-register">
+    <div class="container-register" enctype="multipart/form-data">
         <form method="POST">
             <table>
                 <tr>
@@ -42,7 +42,7 @@
                 </tr>
                 <tr>
                     <td>Image</td>
-                    <td><input type="text" name="image" id="image"></td>
+                    <td><input type="file" name="image" id="image"></td>
                 </tr>
             </table>
             <div class="form-btn">

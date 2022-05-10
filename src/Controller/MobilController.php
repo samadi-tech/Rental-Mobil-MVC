@@ -2,6 +2,7 @@
 
 namespace SamTech\Controller;
 
+use SamTech\App\Helper;
 use SamTech\App\View;
 use SamTech\Config\Database;
 use SamTech\Exceptions\ValidationMobil;
@@ -39,7 +40,7 @@ class MobilController
         $request->mesin = $_POST['mesin'];
         $request->tahun = $_POST['tahun'];
         $request->biaya = $_POST['biaya'];
-        $request->image = $_POST['image'];
+        $request->image = Helper::UploadGambar();
 
         if (isset($_POST['tambah'])) {
             try {

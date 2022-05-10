@@ -4,7 +4,7 @@
     <hr />
 
     <div class="container-register">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>ID</td>
@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <td>Upload Picture</td>
-                    <td><input type="text" name="image" id="image"></td>
+                    <td><input type="file" name="image" id="image"></td>
                 </tr>
             </table>
             <div class="form-btn">
