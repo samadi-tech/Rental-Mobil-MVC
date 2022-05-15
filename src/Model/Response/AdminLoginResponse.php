@@ -4,7 +4,7 @@ namespace SamTech\Model\Response;
 
 use SamTech\Domain\Admin;
 
-class AdminRegisterRes
+class AdminLoginResponse
 {
     public Admin $admin;
 }

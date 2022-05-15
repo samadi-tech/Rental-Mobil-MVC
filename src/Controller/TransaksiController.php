@@ -22,8 +22,11 @@ class TransaksiController
 
     function transaksi()
     {
+        $transaksi = $this->service->showData();
+
         View::ViewAdmin("Admin/transaksi", [
             "title" => "Data Transaksi | Rental Mobil | SamTech",
+            "data" => $transaksi
 
         ]);
     }
@@ -43,9 +46,9 @@ class TransaksiController
         if (isset($_POST['tambah'])) {
             try {
                 $this->service->add($request);
-                View::Redirect("transaksi/susses");
+                View::Redirect("transaksi/transaksi");
             } catch (ValidationTransaksi $exception) {
-                View::ViewAdmin("transaksi/transaksi", [
+                View::ViewAdmin("transaksi/error", [
                     "title" => "Input Data Gagal | Rental Mobil | SamTech",
                     "error" => $exception->getMessage()
 
@@ -55,9 +58,9 @@ class TransaksiController
         if (isset($_POST['pesan'])) {
             try {
                 $this->service->add($request);
-                View::Redirect("transaksi/susses");
+                View::Redirect("transaksi/transaksi");
             } catch (ValidationTransaksi $exception) {
-                View::ViewAdmin("transaksi/booking", [
+                View::ViewAdmin("transaksi/error", [
                     "title" => "Input Data Gagal | Rental Mobil | SamTech",
                     "error" => $exception->getMessage()
 

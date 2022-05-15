@@ -33,8 +33,7 @@ class View
 
     public static function Redirect(string $url)
     {
-        $baseURL = BASEURL;
-        header("Location:  $baseURL/$url");
+        header("Location: $url");
         exit();
     }
 }

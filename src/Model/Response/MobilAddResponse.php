@@ -4,7 +4,7 @@ namespace SamTech\Model\Response;
 
 use SamTech\Domain\Mobil;
 
-class MobilRegisterRes
+class MobilAddResponse
 {
     public Mobil $mobil;
 }

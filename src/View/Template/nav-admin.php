@@ -18,10 +18,11 @@
         <span></span>
     </div>
     <ul class="menu-nav">
-        <li class="list-nav"><a href="<?= BASEURL; ?>/admin">HOME</a></li>
-        <li class="list-nav"><a href="<?= BASEURL; ?>/admin/transaksi">Transaksi</a></li>
-        <li class="list-nav"><a href="<?= BASEURL; ?>/admin/members">Data Members</a></li>
-        <li class="list-nav"><a href="<?= BASEURL; ?>/admin/mobil">Data Mobil</a></li>
-        <li class="list-nav"><a href="<?= BASEURL; ?>/admin/admin">Data Admin</a></li>
+        <li class="list-nav"><a href="/admin">HOME</a></li>
+        <li class="list-nav"><a href="/admin/transaksi">Transaksi</a></li>
+        <li class="list-nav"><a href="/admin/members">Data Members</a></li>
+        <li class="list-nav"><a href="/admin/mobil">Data Mobil</a></li>
+        <li class="list-nav"><a href="/admin/admin">Data Admin</a></li>
+        <li class="list-nav"><a href="/admin/bantuan">Data Pesan</a></li>
     </ul>
 </div>

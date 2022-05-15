@@ -15,16 +15,16 @@ class AdminRepository
 
     public function save(Admin $admin): Admin
     {
-        $statement = $this->connection->prepare("INSERT INTO SamTechRental.admin(id,username,password) VALUES (?,?,?)");
+        $statement = $this->connection->prepare("INSERT INTO SamTechRental.admin(username,password,nama) VALUES (?,?,?)");
         $statement->execute([
-            $admin->id, $admin->username, $admin->password
+            $admin->username, $admin->password, $admin->nama
         ]);
         return $admin;
     }
 
     public function findById(int $id): ?Admin
     {
-        $statement = $this->connection->prepare("SELECT id,username,password FROM SamTechRental.admin where id=?");
+        $statement = $this->connection->prepare("SELECT id,username,password,nama FROM SamTechRental.admin where id=?");
         $statement->execute([$id]);
 
         try {
@@ -33,7 +33,46 @@ class AdminRepository
                 $admin->id = $row['id'];
                 $admin->username = $row['username'];
                 $admin->password = $row['password'];
+                $admin->nama = $row['nama'];
 
+                return $admin;
+            } else {
+                return null;
+            }
+        } finally {
+            $statement->closeCursor();
+        }
+    }
+
+    public function findByUsername(string $username): ?Admin
+    {
+        $statement = $this->connection->prepare("SELECT id,username,password,nama FROM SamTechRental.admin where username=?");
+        $statement->execute([$username]);
+
+        try {
+            if ($row = $statement->fetch()) {
+                $admin = new Admin();
+                $admin->id = $row['id'];
+                $admin->username = $row['username'];
+                $admin->password = $row['password'];
+                $admin->nama = $row['nama'];
+
+                return $admin;
+            } else {
+                return null;
+            }
+        } finally {
+            $statement->closeCursor();
+        }
+    }
+
+    public function findAll(): ?array
+    {
+        $statement = $this->connection->prepare("SELECT id,username,nama FROM SamTechRental.admin");
+        $statement->execute();
+
+        try {
+            if ($admin = $statement->fetchAll()) {
                 return $admin;
             } else {
                 return null;

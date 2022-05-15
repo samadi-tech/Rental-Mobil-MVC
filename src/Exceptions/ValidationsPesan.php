@@ -4,6 +4,6 @@ namespace SamTech\Exceptions;
 
 use Exception;
 
-class ValidationException extends Exception
+class ValidationPesan extends Exception
 {
 }

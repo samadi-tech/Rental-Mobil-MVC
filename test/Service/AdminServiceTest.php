@@ -3,37 +3,38 @@
 namespace SamTech\Service;
 
 use PHPUnit\Framework\TestCase;
-use SamTech\Model\Request\AdminRegisterReq;
 use SamTech\Config\Database;
 use SamTech\Domain\Admin;
-use SamTech\Exceptions\ValidationException;
+use SamTech\Exceptions\ValidationAdminException;
+use SamTech\Model\Request\AdminLoginRequest;
+use SamTech\Model\Request\AdminRegisterRequest;
 use SamTech\Repository\AdminRepository;
 
 class AdminServiceTest extends TestCase
 {
-    private AdminService $adminService;
-    private AdminRepository $adminRepo;
+    private AdminService $service;
+    private AdminRepository $repo;
 
     protected function setUp(): void
     {
         $con = Database::getConection();
-        $this->adminRepo = new AdminRepository($con);
-        $this->adminService = new AdminService($this->adminRepo);
+        $this->repo = new AdminRepository($con);
+        $this->service = new AdminService($this->repo);
 
-        $this->adminRepo->deleteAll();
+        $this->repo->deleteAll();
     }
 
     public function testRegisterSucces()
     {
-        $request = new AdminRegisterReq();
-        $request->id = 1;
-        $request->username = "samadi";
+        $request = new AdminRegisterRequest();
+        $request->username = "samadi10";
         $request->password = "rahasia";
+        $request->nama = "ADI NUGROHO";
 
-        $response = $this->adminService->register($request);
+        $response = $this->service->register($request);
 
-        self::assertEquals($request->id, $response->admin->id);
         self::assertEquals($request->username, $response->admin->username);
+        self::assertEquals($request->nama, $response->admin->nama);
         self::assertNotEquals($request->password, $response->admin->password);
 
         self::assertTrue(password_verify($request->password, $response->admin->password));
@@ -41,32 +42,70 @@ class AdminServiceTest extends TestCase
 
     public function testRegisterFailed()
     {
-        $this->expectException(ValidationException::class);
+        $this->expectException(ValidationAdminException::class);
 
-        $request = new AdminRegisterReq();
-        $request->id = 23;
+        $request = new AdminRegisterRequest();
         $request->username = "";
         $request->password = "";
+        $request->nama = "";
 
-        $this->adminService->register($request);
+        $this->service->register($request);
     }
 
     public function testRegisterDuplicate()
     {
+        $this->expectException(ValidationAdminException::class);
+
         $admin = new Admin();
-        $admin->id = 23;
+        $admin->username = "samadi10";
+        $admin->password = "rahasia";
+        $admin->nama = "ADI NUGROHO";
+
+        $this->repo->save($admin);
+
+
+        $request = new AdminRegisterRequest();
+        $request->username = "samadi10";
+        $request->password = "rahasia";
+        $request->nama = "ADI NUGROHO";
+
+        $this->service->register($request);
+    }
+
+    public function testLoginFailed()
+    {
+
+        $admin = new admin();
+        $admin->id = 145;
         $admin->username = "samadi";
         $admin->password = "rahasia";
 
-        $this->adminRepo->save($admin);
-        $this->expectException(ValidationException::class);
+        $this->expectException(ValidationAdminException::class);
 
+        $login = new AdminLoginRequest();
+        $login->username = "samadi";
+        $login->password = null;
 
-        $request = new AdminRegisterReq();
-        $request->id = 23;
-        $request->username = "samadi";
-        $request->password = "rahasia";
+        $this->service->login($login);
+    }
 
-        $this->adminService->register($request);
+    public function testLoginSucces()
+    {
+
+        $admin = new admin();
+        $admin->id = 145;
+        $admin->username = "samadi";
+        $admin->password = password_hash("rahasia", PASSWORD_BCRYPT);
+
+        $this->expectException(ValidationAdminException::class);
+
+        $login = new AdminLoginRequest();
+        $login->username = "samadi";
+        $login->password = "rahasia";
+
+        $response = $this->service->login($login);
+
+        self::assertEquals($admin->username, $response->admin->username);
+        self::assertTrue(password_verify($login->password, $response->admin->password));
     }
 }

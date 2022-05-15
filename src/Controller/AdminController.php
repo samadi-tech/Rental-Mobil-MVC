@@ -4,27 +4,32 @@ namespace SamTech\Controller;
 
 use SamTech\App\View;
 use SamTech\Config\Database;
+use SamTech\Exceptions\ValidationAdminException;
 use SamTech\Exceptions\ValidationException;
 use SamTech\Model\Request\AdminRegisterReq;
+use SamTech\Model\Request\AdminRegisterRequest;
 use SamTech\Repository\AdminRepository;
 use SamTech\Service\AdminService;
 
 class AdminController
 {
-    private AdminService $adminService;
+    private AdminService $service;
 
     public function __construct()
     {
         $con = Database::getConection();
-        $adminRepo = new AdminRepository($con);
-        $this->adminService = new AdminService($adminRepo);
+        $repo = new AdminRepository($con);
+        $this->service = new AdminService($repo);
     }
 
     function admin()
     {
+        $admin = $this->service->showData();
+
         View::ViewAdmin("Admin/admin", [
             "title" => "Adminitrator | Rental Mobil | SamTech",
-            "error" => ""
+            "error" => "",
+            "data" => $admin
 
         ]);
     }
@@ -32,15 +37,16 @@ class AdminController
 
     public function register()
     {
-        $request = new AdminRegisterReq();
-        $request->id = $_POST['id'];
+        $request = new AdminRegisterRequest();
         $request->username = $_POST['username'];
         $request->password = $_POST['password'];
+        $request->nama = $_POST['nama'];
 
         if (isset($_POST['tambah'])) {
             try {
-                $this->adminService->register($request);
-            } catch (ValidationException $exception) {
+                $this->service->register($request);
+                View::Redirect("/admin/admin");
+            } catch (ValidationAdminException $exception) {
                 View::ViewAdmin("admin/admin", [
                     "title" => "Input Data Gagal | Rental Mobil | SamTech",
                     "error" => $exception->getMessage()

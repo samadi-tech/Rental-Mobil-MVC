@@ -53,7 +53,7 @@ class Router
         }
 
         http_response_code(404);
-        header("Location:http://localhost/rental/public/index.php/error");
+        header("Location:/error");
         exit;
     }
 }

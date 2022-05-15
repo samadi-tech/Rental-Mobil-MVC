@@ -4,21 +4,27 @@ namespace SamTech\Controller;
 
 
 use SamTech\App\View;
+use SamTech\Config\Database;
+use SamTech\Repository\MobilRepository;
+use SamTech\Service\MobilService;
 
 class HomeController
 {
+    private MobilService $mobil;
+    public function __construct()
+    {
+        $con = Database::getConection();
+        $repo = new MobilRepository($con);
+        $this->mobil = new MobilService($repo);
+    }
 
     function index()
     {
-        // $model = [
-        //     "tittle" => "Samtech Skripsi",
-        //     "content" => "Halaman index HOME"
-        // ];
-        // Render::view("Home/index",$model);
+        $mobil = $this->mobil->showData();
 
         View::ViewHome("Home/index", [
             "title" => "Rental Mobil | SamTech",
-            "content" => "Halaman index HOME"
+            "mobil" => $mobil
 
         ]);
     }
@@ -44,15 +50,6 @@ class HomeController
     function booking()
     {
         View::ViewHome("Home/booking", [
-            "title" => "Rental Mobil | SamTech",
-            "content" => "Halaman index HOME"
-
-        ]);
-    }
-
-    function bantuan()
-    {
-        View::ViewHome("Home/bantuan", [
             "title" => "Rental Mobil | SamTech",
             "content" => "Halaman index HOME"
 

@@ -6,24 +6,27 @@ use SamTech\App\Helper;
 use SamTech\App\View;
 use SamTech\Config\Database;
 use SamTech\Exceptions\ValidationMember;
-use SamTech\Model\Request\MemberRegisterReq;
+use SamTech\Model\Request\MemberLoginRequest;
+use SamTech\Model\Request\MemberRegisterRequest;
 use SamTech\Repository\MemberRepository;
 use SamTech\Service\MemberService;
 
 class MemberController
 {
-    private MemberService $member;
+    private MemberService $service;
     public function __construct()
     {
         $con = Database::getConection();
         $memberRepo = new MemberRepository($con);
-        $this->member = new MemberService($memberRepo);
+        $this->service = new MemberService($memberRepo);
     }
 
-    function members()
+    function member()
     {
-        View::ViewAdmin("Admin/members", [
+        $member = $this->service->showData();
+        View::ViewAdmin("Admin/member", [
             "title" => "Data Member | Rental Mobil | SamTech",
+            "member" => $member
         ]);
     }
 
@@ -31,8 +34,7 @@ class MemberController
     public function register()
     {
 
-        $request = new MemberRegisterReq();
-        $request->id = $_POST['id'];
+        $request = new MemberRegisterRequest();
         $request->username = $_POST['username'];
         $request->password = $_POST['password'];
         $request->nama = $_POST['nama'];
@@ -45,8 +47,8 @@ class MemberController
         if (isset($_POST['register'])) {
 
             try {
-                $this->member->register($request);
-                View::Redirect("transaksi/login");
+                $this->service->register($request);
+                View::Redirect("/transaksi/login");
             } catch (ValidationMember $exception) {
                 View::ViewAdmin("transaksi/register", [
                     "title" => "Input Data Gagal | Rental Mobil | SamTech",
@@ -58,10 +60,31 @@ class MemberController
         if (isset($_POST['tambah'])) {
 
             try {
-                $this->member->register($request);
-                View::Redirect("admin/succes");
+                $this->service->register($request);
+                View::Redirect("/admin/members");
             } catch (ValidationMember $exception) {
                 View::ViewAdmin("admin/members", [
+                    "title" => "Input Data Gagal | Rental Mobil | SamTech",
+                    "error" => $exception->getMessage()
+                ]);
+            }
+        }
+    }
+
+    function login()
+    {
+        $request = new MemberLoginRequest();
+        $request->username = $_POST['username'];
+        $request->password = $_POST['password'];
+
+
+        if (isset($_POST['login'])) {
+
+            try {
+                $this->service->login($request);
+                View::Redirect("/transaksi/booking");
+            } catch (ValidationMember $exception) {
+                View::ViewAdmin("transaksi/login", [
                     "title" => "Input Data Gagal | Rental Mobil | SamTech",
                     "error" => $exception->getMessage()
                 ]);

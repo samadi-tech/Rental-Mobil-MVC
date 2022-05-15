@@ -18,10 +18,10 @@
         <span></span>
     </div>
     <ul class="menu-nav">
-        <li class="list-nav"><a href="<?= BASEURL; ?>/">HOME</a></li>
-        <li class="list-nav"><a href="<?= BASEURL; ?>/transaksi/login">Transaksi</a></li>
-        <li class="list-nav"><a href="<?= BASEURL; ?>/bantuan">Bantuan</a></li>
-        <li class="list-nav"><a href="<?= BASEURL; ?>/tentang">Tentang</a></li>
+        <li class="list-nav"><a href="/">HOME</a></li>
+        <li class="list-nav"><a href="/transaksi/login">Transaksi</a></li>
+        <li class="list-nav"><a href="/bantuan">Bantuan</a></li>
+        <li class="list-nav"><a href="/tentang">Tentang</a></li>
     </ul>
 </div>
 

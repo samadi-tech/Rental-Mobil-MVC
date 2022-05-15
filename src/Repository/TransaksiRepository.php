@@ -68,6 +68,31 @@ class TransaksiRepository
         }
     }
 
+
+    public function findAll(): ?array
+    {
+        $statement = $this->connection->prepare("
+        SELECT id,
+        id_member,
+        id_mobil,
+        tgl_pinjam,
+        tgl_kembali,
+        tarif_total FROM SamTechRental.transaksi");
+
+        $statement->execute();
+
+        try {
+            if ($transaksi = $statement->fetchAll()) {
+
+                return $transaksi;
+            } else {
+                return null;
+            }
+        } finally {
+            $statement->closeCursor();
+        }
+    }
+
     public function deleteAll(): void
     {
         $sql = "DELETE From SamTechRental.transaksi";

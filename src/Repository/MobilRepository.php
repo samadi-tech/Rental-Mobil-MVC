@@ -21,9 +21,9 @@ class MobilRepository
             nama,
             merek,
             bbm,
-            dimensi,
-            mesin,
             tahun,
+            kapasitas,
+            keterangan,
             biaya,
             image) VALUES (?,?,?,?,?,?,?,?,?)");
 
@@ -32,18 +32,27 @@ class MobilRepository
             $mobil->nama,
             $mobil->merek,
             $mobil->bbm,
-            $mobil->dimensi,
-            $mobil->mesin,
             $mobil->tahun,
+            $mobil->kapasitas,
+            $mobil->keterangan,
             $mobil->biaya,
             $mobil->image
         ]);
         return $mobil;
     }
 
-    public function findById(int $id): ?mobil
+    public function findById(string $id): ?mobil
     {
-        $statement = $this->connection->prepare("SELECT id,nama,merek,bbm,dimensi,mesin,tahun,biaya,image FROM SamTechRental.mobil where id=?");
+        $statement = $this->connection->prepare("SELECT 
+        id,
+        nama,
+        merek,
+        bbm,
+        tahun,
+        kapasitas,
+        keterangan,
+        biaya,
+        image FROM SamTechRental.mobil where id=?");
         $statement->execute([$id]);
 
         try {
@@ -53,11 +62,27 @@ class MobilRepository
                 $mobil->nama = $row['nama'];
                 $mobil->merek = $row['merek'];
                 $mobil->bbm = $row['bbm'];
-                $mobil->dimensi = $row['dimensi'];
-                $mobil->mesin = $row['mesin'];
                 $mobil->tahun = $row['tahun'];
+                $mobil->kapasitas = $row['kapasitas'];
+                $mobil->keterangan = $row['keterangan'];
                 $mobil->biaya = $row['biaya'];
                 $mobil->image = $row['image'];
+                return $mobil;
+            } else {
+                return null;
+            }
+        } finally {
+            $statement->closeCursor();
+        }
+    }
+
+    public function findAll(): ?array
+    {
+        $statement = $this->connection->prepare("SELECT id,nama,merek,bbm,tahun,kapasitas,keterangan,biaya,image FROM SamTechRental.mobil");
+        $statement->execute();
+
+        try {
+            if ($mobil = $statement->fetchAll()) {
                 return $mobil;
             } else {
                 return null;

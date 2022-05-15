@@ -2,10 +2,10 @@
 
 namespace SamTech\Domain;
 
-class Admin
+class Bantuan
 {
     public int $id;
-    public string $username;
-    public string $password;
     public string $nama;
+    public string $subject;
+    public string $pesan;
 }

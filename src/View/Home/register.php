@@ -7,30 +7,25 @@
         <form method="POST" enctype="multipart/form-data">
             <table>
                 <tr>
-                    <td>ID</td>
-                    <td><input type="text" name="id" id="id" value="<?= $_POST["id"] ?? ""; ?>" autocomplete="none"></td>
-
-                </tr>
-                <tr>
                     <td>Username</td>
-                    <td><input type="text" name="username" id="username"></td>
+                    <td><input type="text" name="username" id="username" autocomplete="off"></td>
 
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="password" id="password"></td>
+                    <td><input type="password" name="password" id="password" autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td>Nama Lengkap</td>
-                    <td><input type="text" name="nama" id="nama"></td>
+                    <td><input type="text" name="nama" id="nama" autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td>Tempat Tanggal Lahir</td>
-                    <td><input type="text" name="ttl" id="ttl"></td>
+                    <td><input type="text" name="ttl" id="ttl" autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td>Alamat</td>
-                    <td><input type="text" name="alamat" id="alamat"></td>
+                    <td><input type="text" name="alamat" id="alamat" autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td>No Telepon</td>

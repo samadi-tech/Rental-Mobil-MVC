@@ -8,39 +8,38 @@ use SamTech\Domain\Mobil;
 
 class MobilRepositoryTest extends TestCase
 {
-    private MobilRepository $mobilRepository;
+    private MobilRepository $repository;
 
     protected function setUp(): void
     {
-        $this->mobilRepository = new MobilRepository(Database::getConection());
-        $this->mobilRepository->deleteAll();
+        $this->repository = new MobilRepository(Database::getConection());
+        $this->repository->deleteAll();
     }
 
     public function testSaveSuccess()
     {
         $mobil = new Mobil();
-        $mobil->id = 44;
+        $mobil->id = "AV01";
         $mobil->nama = "Avanza";
-        $mobil->dimensi = "30";
-        $mobil->bbm = "";
-        $mobil->merek = "";
-        $mobil->mesin = "";
-        $mobil->tahun = "";
-        $mobil->biaya = 0;
-        $mobil->image = "";
+        $mobil->merek = "HONDA";
+        $mobil->bbm = "30 L";
+        $mobil->tahun = "2017";
+        $mobil->kapasitas = "8 Orang";
+        $mobil->keterangan = "Mobil masih layak digunakan.";
+        $mobil->biaya = 400000;
+        $mobil->image = "avanza.jpeg";
 
-        $this->mobilRepository->save($mobil);
+        $this->repository->save($mobil);
 
-        $result = $this->mobilRepository->findById($mobil->id);
+        $result = $this->repository->findById($mobil->id);
 
-        self::assertEquals($mobil->id, $result->id);
         self::assertEquals($mobil->nama, $result->nama);
         self::assertEquals($mobil->merek, $result->merek);
     }
 
     public function testFindByIdNotFound()
     {
-        $mobil = $this->mobilRepository->findById(12);
+        $mobil = $this->repository->findById("AZ10");
 
         self::assertNull($mobil);
     }

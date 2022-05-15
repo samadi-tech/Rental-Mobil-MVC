@@ -4,31 +4,31 @@ namespace SamTech\Service;
 
 use SamTech\Config\Database;
 use SamTech\Domain\Mobil;
-use SamTech\Exceptions\ValidationMobil;
-use SamTech\Model\Request\MobilRegisterReq;
-use SamTech\Model\Response\MobilRegisterRes;
+use SamTech\Exceptions\ValidationMobilException;
+use SamTech\Model\Request\MobilAddRequest;
+use SamTech\Model\Response\MobilAddResponse;
 use SamTech\Repository\MobilRepository;
 
 class MobilService
 {
 
-    private MobilRepository $mobilRepo;
+    private MobilRepository $repo;
 
     public function __construct(MobilRepository $mobilRepo)
     {
-        $this->mobilRepo = $mobilRepo;
+        $this->repo = $mobilRepo;
     }
 
-    public function register(MobilRegisterReq $request): MobilRegisterRes
+    public function add(MobilAddRequest $request): MobilAddResponse
     {
-        $this->validateMobilRegisterReq($request);
+        $this->validationMobilAdd($request);
 
         try {
             Database::beginTransaction();
-            $mobil = $this->mobilRepo->findById($request->id);
+            $mobil = $this->repo->findById($request->id);
 
             if ($mobil != null) {
-                throw new ValidationMobil("cars is not null");
+                throw new ValidationMobilException("Mobil is not null !");
             }
 
             $mobil = new Mobil();
@@ -36,31 +36,38 @@ class MobilService
             $mobil->nama = $request->nama;
             $mobil->merek = $request->merek;
             $mobil->bbm = $request->bbm;
-            $mobil->dimensi = $request->dimensi;
-            $mobil->mesin = $request->mesin;
             $mobil->tahun = $request->tahun;
+            $mobil->kapasitas = $request->kapasitas;
+            $mobil->keterangan = $request->keterangan;
             $mobil->biaya = $request->biaya;
             $mobil->image = $request->image;
 
 
-            $this->mobilRepo->save($mobil);
+            $this->repo->save($mobil);
 
-            $response = new mobilRegisterRes();
+            $response = new MobilAddResponse();
             $response->mobil = $mobil;
 
             Database::commitTransaction();
 
             return $response;
-        } catch (\Exception $exceptions) {
+        } catch (ValidationMobilException $exceptions) {
             Database::rollBackTransaction();
-            throw $exceptions;
+            throw new ValidationMobilException("Mobil is wrong !");
         }
     }
 
-    public function validateMobilRegisterReq(mobilRegisterReq $request)
+    public function validationMobilAdd(MobilAddRequest $request)
     {
-        if ($request->id == null || $request->nama == ""  || $request->merek == "") {
-            throw new ValidationMobil("cars cannot blank");
+        if ($request->id == null || $request->id == ""  || trim($request->id) == "" || $request->nama == null || $request->nama == ""  || trim($request->nama) == "") {
+            throw new ValidationMobilException("ID, Nama can't blank !");
         }
+    }
+
+    public function showData(): ?array
+    {
+        $mobil = $this->repo->findAll();
+
+        return $mobil;
     }
 }

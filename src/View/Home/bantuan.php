@@ -4,7 +4,7 @@
     <hr />
 
     <div class="container-register">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>Nama Lengkap:</td>
@@ -12,7 +12,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" />
+                        <input type="text" name="nama" id="nama" autocomplete="off" />
                     </td>
 
                 </tr>
@@ -21,18 +21,18 @@
 
                 </tr>
                 <tr>
-                    <td><input type="text" /></td>
+                    <td><input type="text" name="subject" id="subject" autocomplete="off" /></td>
                 </tr>
                 <tr>
                     <td>Pesan:</td>
 
                 </tr>
                 <tr>
-                    <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+                    <td><textarea name="pesan" id="pesan" cols="30" rows="10"></textarea></td>
                 </tr>
             </table>
             <div class="form-btn">
-                <button type="submit">Kirim</button>
+                <button type="submit" name="kirim">Kirim</button>
             </div>
         </form>
     </div>

@@ -5,8 +5,8 @@ namespace SamTech\Controller;
 use SamTech\App\Helper;
 use SamTech\App\View;
 use SamTech\Config\Database;
-use SamTech\Exceptions\ValidationMobil;
-use SamTech\Model\Request\MobilRegisterReq;
+use SamTech\Exceptions\ValidationMobilException;
+use SamTech\Model\Request\MobilAddRequest;
 use SamTech\Repository\MobilRepository;
 use SamTech\Service\MobilService;
 
@@ -22,30 +22,35 @@ class MobilController
 
     function mobil()
     {
+        $mobil = $this->mobil->showData();
+
         View::ViewAdmin("Admin/mobil", [
             "title" => "Data Mobil | Rental Mobil | SamTech",
+            "data" => $mobil,
 
         ]);
     }
 
 
-    public function register()
+    public function tambah()
     {
-        $request = new MobilRegisterReq();
+        $request = new MobilAddRequest();
         $request->id = $_POST['id'];
         $request->nama = $_POST['nama'];
         $request->merek = $_POST['merek'];
         $request->bbm = $_POST['bbm'];
-        $request->dimensi = $_POST['dimensi'];
-        $request->mesin = $_POST['mesin'];
         $request->tahun = $_POST['tahun'];
+        $request->kapasitas = $_POST['kapasitas'];
+        $request->keterangan = $_POST['keterangan'];
         $request->biaya = $_POST['biaya'];
         $request->image = Helper::UploadGambar();
 
-        if (isset($_POST['tambah'])) {
+        if (isset($_POST['add'])) {
+            var_dump($request);
             try {
-                $this->mobil->register($request);
-            } catch (ValidationMobil $exception) {
+                $this->mobil->add($request);
+                View::Redirect("/admin/mobil");
+            } catch (ValidationMobilException $exception) {
                 View::ViewAdmin("admin/mobil", [
                     "title" => "Input Data Gagal | Rental Mobil | SamTech",
                     "error" => $exception->getMessage()

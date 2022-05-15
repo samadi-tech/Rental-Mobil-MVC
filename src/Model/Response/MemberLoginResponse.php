@@ -4,7 +4,7 @@ namespace SamTech\Model\Response;
 
 use SamTech\Domain\Member;
 
-class MemberRegisterRes
+class MemberLoginResponse
 {
     public Member $member;
 }

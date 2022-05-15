@@ -8,15 +8,15 @@
             <table>
                 <tr>
                     <td>ID Transaksi</td>
-                    <td><input type="text" name="id" id="id" /></td>
+                    <td><input type="text" name="id" id="id" autocomplete="off" /></td>
                 </tr>
                 <tr>
                     <td>ID Member</td>
-                    <td><input type="text" name="idmember" id="idmember" /></td>
+                    <td><input type="text" name="idmember" id="idmember" autocomplete="off" /></td>
                 </tr>
                 <tr>
                     <td>ID Mobil</td>
-                    <td><input type="text" name="idmobil" id="idmobil" /></td>
+                    <td><input type="text" name="idmobil" id="idmobil" autocomplete="off" /></td>
                 </tr>
                 <tr>
                     <td>Tanggal Pinjam</td>
@@ -28,7 +28,7 @@
                 </tr>
                 <tr>
                     <td>Total Tarif</td>
-                    <td><input type="text" name="tarif" id="tarif" /></td>
+                    <td><input type="text" name="tarif" id="tarif" autocomplete="off" /></td>
                 </tr>
             </table>
             <div class="form-btn">
@@ -42,21 +42,24 @@
     <div class="data-items">
         <table cellspacing="0">
             <thead>
-                <td>ID Transaksi</td>
                 <td>Nama Peminjam</td>
-                <td>Jenis Mobil</td>
+                <td>Nama Mobil</td>
                 <td>Tanggal Pesan</td>
                 <td>Tanggal Kembali</td>
-                <td>Total</td>
             </thead>
-            <tr>
-                <td>ID Transaksi</td>
-                <td>Nama Peminjam</td>
-                <td>Jenis Mobil</td>
-                <td>Tanggal Pesan</td>
-                <td>Tanggal Kembali</td>
-                <td>Total</td>
-            </tr>
+            <?php
+            $data = $model['data'];
+
+            foreach ($data as $i => $transaksi) :
+
+            ?>
+                <tr>
+                    <td><?= $transaksi['id_member']; ?></td>
+                    <td><?= $transaksi['id_mobil']; ?></td>
+                    <td><?= $transaksi['tgl_pinjam']; ?></td>
+                    <td><?= $transaksi['tgl_kembali']; ?></td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </div>
 </div>

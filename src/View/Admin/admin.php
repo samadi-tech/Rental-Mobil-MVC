@@ -7,16 +7,16 @@
         <form method="POST">
             <table>
                 <tr>
-                    <td>ID</td>
-                    <td><input type="text" name="id" id="id" value="<?= $_POST["id"] ?? ""; ?>" autocomplete="none"></td>
-                </tr>
-                <tr>
                     <td>Username</td>
-                    <td><input type="text" name="username" id="username" value="<?= $_POST["username"] ?? ""; ?> "></td>
+                    <td><input type="text" name="username" id="username" value="<?= $_POST["username"] ?? ""; ?>" autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="password" id="password" /></td>
+                    <td><input type="password" name="password" id="password" autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <td>Nama Lengkap</td>
+                    <td><input type="text" name="nama" id="nama" autocomplete="off" /></td>
                 </tr>
 
             </table>
@@ -32,10 +32,19 @@
         <table cellspacing="0">
             <thead>
                 <td>Username</td>
+                <td>Nama Lengkap</td>
             </thead>
-            <tr>
-                <td>Username</td>
-            </tr>
+            <?php
+            $data = $model['data'];
+
+            foreach ($data as $admin => $value) :
+            ?>
+                <tr>
+                    <td><?= $value['username']; ?></td>
+                    <td><?= $value['nama']; ?></td>
+                </tr>
+
+            <?php endforeach; ?>
         </table>
     </div>
 </div>

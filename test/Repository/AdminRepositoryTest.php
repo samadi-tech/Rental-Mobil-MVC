@@ -8,34 +8,33 @@ use SamTech\Config\Database;
 
 class AdminRepositoryTest extends TestCase
 {
-    private AdminRepository $adminRepository;
+    private AdminRepository $repository;
 
     protected function setUp(): void
     {
-        $this->adminRepository = new AdminRepository(Database::getConection());
+        $this->repository = new AdminRepository(Database::getConection());
 
-        $this->adminRepository->deleteAll();
+        $this->repository->deleteAll();
     }
 
     public function testSaveSuccess()
     {
         $admin = new Admin();
-        $admin->id = 44;
-        $admin->username = "samadi";
+        $admin->username = "samadi10";
         $admin->password = "rahasia";
+        $admin->nama = "ADI NUGROHO";
 
-        $this->adminRepository->save($admin);
+        $this->repository->save($admin);
 
-        $result = $this->adminRepository->findById($admin->id);
+        $result = $this->repository->findByUsername($admin->username);
 
-        self::assertEquals($admin->id, $result->id);
         self::assertEquals($admin->username, $result->username);
         self::assertEquals($admin->password, $result->password);
     }
 
-    public function testFindByIdNotFound()
+    public function testUsernameFailed()
     {
-        $admin = $this->adminRepository->findById("122");
+        $admin = $this->repository->findByUsername("samtech");
 
         self::assertNull($admin);
     }

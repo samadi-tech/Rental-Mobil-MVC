@@ -8,7 +8,7 @@
     <title><?= $model['title']; ?></title>
 
     <!-- Manual CSS -->
-    <link rel="stylesheet" href="<?= BASEURL; ?>/../assets/css/style.css" />
+    <link rel="stylesheet" href="<?= ASSETS; ?>css/style.css" />
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/de9bfef59e.js" crossorigin="anonymous"></script>

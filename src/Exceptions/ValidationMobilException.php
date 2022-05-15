@@ -4,6 +4,6 @@ namespace SamTech\Exceptions;
 
 use Exception;
 
-class ValidationMobil extends Exception
+class ValidationMobilException extends Exception
 {
 }

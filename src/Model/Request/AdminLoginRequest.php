@@ -2,9 +2,8 @@
 
 namespace SamTech\Model\Request;
 
-class AdminRegisterReq
+class AdminLoginRequest
 {
-    public ?int $id = null;
     public ?string $username = null;
     public ?string $password = null;
 }

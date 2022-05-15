@@ -6,6 +6,7 @@ use PHPUnit\Framework\TestCase;
 use SamTech\Config\Database;
 use SamTech\Domain\Transaksi;
 use SamTech\Exceptions\ValidationTransaksi;
+use SamTech\Model\Request\TransaksiAddReq as RequestTransaksiAddReq;
 use SamTech\Model\TransaksiAddReq;
 use SamTech\Repository\TransaksiRepository;
 
@@ -25,7 +26,7 @@ class TransaksiServiceTest extends TestCase
 
     public function testAddSuccess()
     {
-        $request = new TransaksiAddReq();
+        $request = new RequestTransaksiAddReq();
         $request->id = "7";
         $request->idmember = "7";
         $request->idmobil = "7";
@@ -46,7 +47,7 @@ class TransaksiServiceTest extends TestCase
         $this->expectException(ValidationTransaksi::class);
 
 
-        $request = new TransaksiAddReq();
+        $request = new RequestTransaksiAddReq();
         $request->id = null;
         $request->idmember = null;
         $request->idmobil = null;

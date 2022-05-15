@@ -5,8 +5,8 @@ namespace SamTech\Service;
 use PHPUnit\Framework\TestCase;
 use SamTech\Config\Database;
 use SamTech\Domain\Mobil;
-use SamTech\Exceptions\ValidationMobil;
-use SamTech\Model\Request\MobilRegisterReq;
+use SamTech\Exceptions\ValidationMobilException;
+use SamTech\Model\Request\MobilAddRequest;
 use SamTech\Repository\MobilRepository;
 
 class MobilServiceTest extends TestCase
@@ -24,64 +24,65 @@ class MobilServiceTest extends TestCase
         $this->repo->deleteAll();
     }
 
-    public function testRegisterSucces()
+    public function testAddSuccess()
     {
-        $request = new MobilRegisterReq();
-        $request->id = 12;
+        $request = new MobilAddRequest();
+        $request->id = "AV01";
         $request->nama = "Avanza";
-        $request->merek = "Honda";
-        $request->dimensi = "30 71 6";
-        $request->bbm = "20l";
-        $request->mesin = "mesin aman";
-        $request->tahun = "2020";
-        $request->biaya = 200000;
-        $request->image = "avanza.jpg";
+        $request->merek = "HONDA";
+        $request->bbm = "30 L";
+        $request->tahun = "2017";
+        $request->kapasitas = "8 Orang";
+        $request->keterangan = "Mobil masih layak digunakan.";
+        $request->biaya = 400000;
+        $request->image = "avanza.jpeg";
 
-        $response = $this->service->register($request);
+        $response = $this->service->add($request);
 
         self::assertEquals($request->id, $response->mobil->id);
         self::assertEquals($request->nama, $response->mobil->nama);
         self::assertEquals($request->merek, $response->mobil->merek);
     }
 
-    public function testRegisterFailed()
+    public function testAddFailed()
     {
-        $this->expectException(ValidationMobil::class);
+        $this->expectException(ValidationMobilException::class);
 
-        $request = new MobilRegisterReq();
+        $request = new MobilAddRequest();
         $request->id = null;
-        $request->nama = "";
+        $request->nama = null;
 
-        $this->service->register($request);
+        $this->service->add($request);
     }
+
     public function testRegisterDuplicate()
     {
         $mobil = new Mobil();
-        $mobil->id = 10;
+        $mobil->id = "AV01";
         $mobil->nama = "Avanza";
-        $mobil->merek = "Honda";
-        $mobil->dimensi = "30 71 6";
-        $mobil->bbm = "20l";
-        $mobil->mesin = "lancar jaya";
-        $mobil->tahun = "2020";
-        $mobil->biaya = 200000;
-        $mobil->image = "avanza.jpg";
+        $mobil->merek = "HONDA";
+        $mobil->bbm = "30 L";
+        $mobil->tahun = "2017";
+        $mobil->kapasitas = "8 Orang";
+        $mobil->keterangan = "Mobil masih layak digunakan.";
+        $mobil->biaya = 400000;
+        $mobil->image = "avanza.jpeg";
 
         $this->repo->save($mobil);
-        $this->expectException(ValidationMobil::class);
+        $this->expectException(ValidationMobilException::class);
 
 
-        $request = new MobilRegisterReq();
-        $request->id = 10;
+        $request = new MobilAddRequest();
+        $request->id = "AV01";
         $request->nama = "Avanza";
-        $request->merek = "Honda";
-        $request->dimensi = "30 71 6";
-        $request->bbm = "20l";
-        $request->mesin = "lancar jaya";
-        $request->tahun = "2020";
-        $request->biaya = 200000;
-        $request->image = "avanza.jpg";
+        $request->merek = "HONDA";
+        $request->bbm = "30 L";
+        $request->tahun = "2017";
+        $request->kapasitas = "8 Orang";
+        $request->keterangan = "Mobil masih layak digunakan.";
+        $request->biaya = 400000;
+        $request->image = "avanza.jpeg";
 
-        $this->service->register($request);
+        $response = $this->service->add($request);
     }
 }

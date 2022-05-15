@@ -17,17 +17,15 @@ class MemberRepository
     {
         $statement = $this->connection->prepare("
         INSERT INTO SamTechRental.members (
-            id,
             username,
             password,
             nama,
             ttl,
             alamat,
             telepon,
-            image) VALUES (?,?,?,?,?,?,?,?)");
+            image) VALUES (?,?,?,?,?,?,?)");
 
         $statement->execute([
-            $member->id,
             $member->username,
             $member->password,
             $member->nama,
@@ -64,6 +62,65 @@ class MemberRepository
                 $member->alamat = $row['alamat'];
                 $member->telepon = $row['telepon'];
                 $member->image = $row['image'];
+                return $member;
+            } else {
+                return null;
+            }
+        } finally {
+            $statement->closeCursor();
+        }
+    }
+
+    public function findByUsername(string $username): ?Member
+    {
+        $statement = $this->connection->prepare("
+        SELECT 
+        id,
+        username,
+        password,
+        nama,
+        ttl,
+        alamat,
+        telepon,
+        image FROM SamTechRental.members where username=?");
+        $statement->execute([$username]);
+
+        try {
+            if ($row = $statement->fetch()) {
+                $member = new Member();
+                $member->id = $row['id'];
+                $member->username = $row['username'];
+                $member->password = $row['password'];
+                $member->nama = $row['nama'];
+                $member->ttl = $row['ttl'];
+                $member->alamat = $row['alamat'];
+                $member->telepon = $row['telepon'];
+                $member->image = $row['image'];
+                return $member;
+            } else {
+                return null;
+            }
+        } finally {
+            $statement->closeCursor();
+        }
+    }
+
+    public function findAll(): ?array
+    {
+        $statement = $this->connection->prepare("
+        SELECT 
+        id,
+        username,
+        password,
+        nama,
+        ttl,
+        alamat,
+        telepon,
+        image FROM SamTechRental.members");
+        $statement->execute();
+
+        try {
+            if ($member = $statement->fetchAll()) {
                 return $member;
             } else {
                 return null;

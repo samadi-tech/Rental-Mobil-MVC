@@ -60,4 +60,11 @@ class TransaksiService
             throw new ValidationTransaksi("Fill cannot blank");
         }
     }
+
+    public function showData(): ?array
+    {
+        $transaksi = $this->transRepo->findAll();
+
+        return $transaksi;
+    }
 }

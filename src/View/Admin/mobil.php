@@ -3,42 +3,42 @@
     <h1>Data Mobil</h1>
     <hr />
 
-    <div class="container-register" enctype="multipart/form-data">
-        <form method="POST">
+    <div class="container-register">
+        <form method="POST" enctype="multipart/form-data">
             <table>
                 <tr>
                     <td>ID</td>
-                    <td><input type="text" name="id" id="id" value="<?= $_POST["id"] ?? ""; ?>" autocomplete="none"></td>
+                    <td><input type="text" name="id" id="id" value="<?= $_POST["id"] ?? ""; ?>" autocomplete="off"></td>
 
                 </tr>
                 <tr>
                     <td>Nama</td>
-                    <td><input type="text" name="nama" id="nama"></td>
+                    <td><input type="text" name="nama" id="nama" autocomplete="off"></td>
 
                 </tr>
                 <tr>
                     <td>Merek</td>
-                    <td><input type="text" name="merek" id="merek"></td>
+                    <td><input type="text" name="merek" id="merek" autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td>Kapasitas BBM</td>
-                    <td><input type="text" name="bbm" id="bbm"></td>
-                </tr>
-                <tr>
-                    <td>Dimensi</td>
-                    <td><input type="text" name="dimensi" id="dimensi"></td>
-                </tr>
-                <tr>
-                    <td>Mesin</td>
-                    <td><input type="text" name="mesin" id="mesin"></td>
+                    <td><input type="text" name="bbm" id="bbm" autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td>Tahun</td>
-                    <td><input type="text" name="tahun" id="tahun"></td>
+                    <td><input type="text" name="tahun" id="tahun" autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <td>Kapasitas</td>
+                    <td><input type="text" name="kapasitas" id="kapasitas" autocomplete="off"></td>
+                </tr>
+                <tr>
+                    <td>Keterangan</td>
+                    <td><input type="text" name="keterangan" id="keterangan" autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td>Biaya</td>
-                    <td><input type="text" name="biaya" id="biaya"></td>
+                    <td><input type="text" name="biaya" id="biaya" autocomplete="off"></td>
                 </tr>
                 <tr>
                     <td>Image</td>
@@ -46,7 +46,7 @@
                 </tr>
             </table>
             <div class="form-btn">
-                <button type="submit" name="tambah">Tambah</button>
+                <button type="submit" name="add">Tambah</button>
                 <button type="submit">Ubah</button>
                 <button type="submit">Hapus</button>
             </div>
@@ -57,18 +57,21 @@
         <table cellspacing="0">
             <thead>
                 <td>ID Mobil</td>
-                <td>Nama Mobil</td>
-                <td>Merek</td>
-                <td>Tahun Pembuatan</td>
+                <td>Nama</td>
                 <td>Biaya</td>
             </thead>
-            <tr>
-                <td>ID Mobil</td>
-                <td>Nama Mobil</td>
-                <td>Merek</td>
-                <td>Tahun Pembuatan</td>
-                <td>Biaya</td>
-            </tr>
+            <?php
+            $data = $model['data'];
+
+            foreach ($data as $i => $mobil) :
+
+            ?>
+                <tr>
+                    <td><?= $mobil['id']; ?></td>
+                    <td><?= $mobil['nama']; ?></td>
+                    <td><?= $mobil['biaya']; ?></td>
+                </tr>
+            <?php endforeach; ?>
         </table>
     </div>
 </div>
